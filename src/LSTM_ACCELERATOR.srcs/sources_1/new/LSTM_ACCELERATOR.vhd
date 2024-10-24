@@ -49,6 +49,9 @@ architecture Behavioral of LSTM_ACCELERATOR is
         return result;
     end function;
     
+    constant n: integer := 5;
+    constant p: integer := 24;
+    
     constant xdim: integer := inputs + cells;
     constant ydim: integer := cells * 4;
     constant area: integer := (inputs + cells) * cells * 4;
@@ -440,7 +443,7 @@ begin
     shiftreg_gen: 
     for i in 0 to inputs-1 generate
     m_i: shift_register
-        generic map (l => xad_dim, n => 5)
+        generic map (l => xad_dim, n => n)
         port map (
             clk         => clk,
             rst         => rst,
@@ -468,7 +471,7 @@ begin
         );
         
     u1: mac_unit
-        generic map (n => 5, p => 24)
+        generic map (n => 5, p => p)
         port map (
             clk         => clk,
             rst         => rst,
@@ -485,7 +488,7 @@ begin
         );
           
     u2: activation_unit
-        generic map (n => 5, p => 24)
+        generic map (n => n, p => p)
         port map (
             clk     => clk,
             rst     => rst,
@@ -499,7 +502,7 @@ begin
         );
         
     u3: LSTM_unit
-        generic map (n => 5, p => 24)
+        generic map (n => n, p => p)
         port map (
             clk     => clk,
             rst     => rst,

@@ -41,7 +41,7 @@ end mul_i32;
 
 architecture Behavioral of mul_i32 is
 
-    signal mul: std_logic_vector (2*(2**n)-1 downto 0) := (others => '0');
+    signal mul: std_logic_vector (2**n-1 downto 0) := (others => '0');
 
 begin
 
@@ -51,7 +51,7 @@ begin
             mul <= (others => '0');
             d_out.flag <= '0';
         elsif rising_edge (clock) and clken = '1' and data1.flag = '1' and data2.flag = '1' then
-            mul <= std_logic_vector(signed(data1.data) * signed(data2.data));
+            mul <= std_logic_vector("*"(signed(data1.data),signed(data2.data))((2**n-1) + p downto p));
             d_out.flag <= '1';
         end if;
     end process;

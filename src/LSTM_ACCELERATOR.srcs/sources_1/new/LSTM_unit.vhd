@@ -57,7 +57,9 @@ architecture Behavioral of LSTM_unit is
     signal cf_df, iz_df: dataflow;
     signal cf_reg, iz_reg: std_logic_vector(2**n downto 0);
     
-    signal thc_reg: std_logic_vector(2**n downto 0);
+    signal thc_reg: std_logic_vector(2**n-1 downto 0);
+    
+    signal sum: dataflow;
     
     type state_type is (RESET, IDLE, PIPELINE);
     signal state, next_state: state_type;
@@ -194,10 +196,10 @@ begin
             clken   =>  clken,
             data1   =>  cf_df,
             data2   =>  iz_df,
-            d_out   =>  c_new
+            d_out   =>  sum
 		);
 		
-		
+	c_new <= sum;	
 	rd_en <= c_new.flag;
 		
 	-- o might need a shift register
