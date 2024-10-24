@@ -95,11 +95,12 @@ architecture Behavioral of Activation_unit is
     signal read_reg: std_logic_vector (2**n+3 downto 0);
     signal read_df: dataflow;
     
-    signal stage1, stage2, stage3: dataflow;
-    signal times2, minus1, invert: dataflow;
+    signal invert, stage1, divid2, stage2, minus1, stage3: dataflow;
     
     signal tansig, posneg: std_logic;
     signal tansig_v, posneg_v: std_logic_vector (7 downto 0);
+    
+    signal en_reg, flag: std_logic;
 
     type state_type is (RESET, IDLE, PIPELINE);
     signal state, next_state: state_type;
@@ -117,6 +118,7 @@ begin
     
     process (state, start, reading, fifo_out)
     begin
+        en_reg <= '0';
         case state is
             when RESET =>
             
@@ -137,12 +139,13 @@ begin
             when PIPELINE =>
 
                 if reading.flag = '1' then
-                    read_reg (2**n-1 downto 0) <= reading.data;
+                    en_reg <= '1';
+                    --read_reg (2**n-1 downto 0) <= reading.data;
                 end if;
                 
                 if fifo_out.flag = '1' then
-                    read_reg (2**n) <= fifo_out.flag;
-                    read_reg (2**n+3 downto 2**n+1) <= fifo_out.gate;
+                    --read_reg (2**n) <= fifo_out.flag;
+                    --read_reg (2**n+3 downto 2**n+1) <= fifo_out.gate;
                 end if;
 
                 next_state <= PIPELINE;
@@ -156,7 +159,8 @@ begin
         if rst = '1' then
             rd_en <= '0';
             address <= (others => '0');
-        elsif rising_edge(clk) then 
+        elsif rising_edge(clk) then
+            read_df.flag <= '0';  
             if start = '1' and act_in.flag = '1' then
                 address <= act_in.data (p+1 downto p-6);
                 rd_en <= '1';
@@ -164,7 +168,19 @@ begin
                 address <= (others => '0');
                 rd_en <= '0';
             end if;
+            if en_reg = '1' then
+                read_df.data <= reading.data;
+                read_df.gate <= fifo_out.gate;
+            else
+                read_df.flag <= flag;  
+            end if;
+            if reading.flag = '1' then
+                flag <= '1';
+            else
+                flag <= '0';
+            end if;
         end if;
+        
     end process;
         
     m0: fifo_dataflow
@@ -180,9 +196,9 @@ begin
             empty   => fifo_empty
         );
         
-    read_df.data <= read_reg (2**n-1 downto 0);
-    read_df.flag <= read_reg (2**n);
-    read_df.gate <= read_reg (2**n+3 downto 2**n+1);
+    --read_df.data <= read_reg (2**n-1 downto 0);
+    --read_df.flag <= read_reg (2**n);
+    --read_df.gate <= read_reg (2**n+3 downto 2**n+1);
     
     tansig <= '1' when fifo_out.gate = "100" or fifo_out.gate = "101" or fifo_out.gate = "111" else '0';
     posneg <= '1' when fifo_out.data(31) = '1' else '0';
@@ -223,12 +239,17 @@ begin
 	        stage1.flag <= '0';
 	    elsif rising_edge(clk) and clken = '1' then
 	       if invert.flag = '1' then
-	           stage1.flag <= '1';
 	           if posneg_v(0) = '1' then
-	               stage1 <= invert;
+	               stage1.data <= invert.data;
+	               stage1.gate <= read_df.gate;
+	               stage1.flag <= invert.flag;
 	           else
-	               stage1 <= read_df;
+	               stage1.data <= read_df.data;
+	               stage1.gate <= read_df.gate;
+	               stage1.flag <= invert.flag;
 	           end if;
+	       else
+	           stage1.flag <= '0';
 	       end if;
 	    end if;
 	end process;
@@ -243,7 +264,7 @@ begin
             clock   =>  clk,
             clken   =>  clken,
             data1   =>  stage1,
-            d_out   =>  times2
+            d_out   =>  divid2
 		);
 		
 	process (clk, rst)
@@ -252,13 +273,18 @@ begin
 	        stage2.data <= (others => '0');
 	        stage2.flag <= '0';
 	    elsif rising_edge(clk) and clken = '1' then
-	       if times2.flag = '1' then
-	           stage2.flag <= '1';
+	       if divid2.flag = '1' then
 	           if tansig_v(2) = '1' then
-	               stage2 <= times2;
+	               stage2.data <= divid2.data;
+	               stage2.gate <= stage1.gate;
+	               stage2.flag <= divid2.flag;
 	           else
-	               stage2 <= stage1;
+	               stage2.data <= stage1.data;
+	               stage2.gate <= stage1.gate;
+	               stage2.flag <= divid2.flag;
 	           end if;
+	       else
+	           stage2.flag <= '0';
 	       end if;
 	    end if;
 	end process;
@@ -285,12 +311,17 @@ begin
 	        stage3.flag <= '0';
 	    elsif rising_edge(clk) and clken = '1' then
 	       if minus1.flag = '1' then
-	           stage3.flag <= '1';
 	           if tansig_v(4) = '1' then
-	               stage3 <= minus1;
+	               stage3.data <= minus1.data;
+	               stage3.gate <= stage2.gate;
+	               stage3.flag <= minus1.flag;
 	           else
-	               stage3 <= stage2;
+	               stage3.data <= stage2.data;
+	               stage3.gate <= stage2.gate;
+	               stage3.flag <= minus1.flag;
 	           end if;
+	       else
+	           stage3.flag <= '0';
 	       end if;
 	    end if;
 	end process;
