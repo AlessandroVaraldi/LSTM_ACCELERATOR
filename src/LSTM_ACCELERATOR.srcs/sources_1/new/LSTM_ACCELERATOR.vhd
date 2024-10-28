@@ -227,7 +227,8 @@ architecture Behavioral of LSTM_ACCELERATOR is
             start       : in  std_logic;
             stop        : in  std_logic;
             data        : in  dataflow;
-            c_new       : buffer dataflow;
+            c_new       : out dataflow;
+            c_add       : out dataflow;
             rd_en       : out std_logic;
             tanh_c      : in  dataflow;
             h_new       : out dataflow
@@ -238,7 +239,7 @@ architecture Behavioral of LSTM_ACCELERATOR is
     signal LU_in, c_new, h_new, tanh_c: dataflow;
     signal LU_rd: std_logic;
     signal LU_ad: std_logic_vector (7 downto 0);
-    signal LU_reading: dataflow;
+    signal c_add, LU_reading: dataflow;
     
     component lut is
         port (
@@ -501,6 +502,9 @@ begin
             act_out => act_out
         );
         
+    LU_in <= act_out;
+    LU_start <= act_out.flag;
+        
     u3: LSTM_unit
         generic map (n => n, p => p)
         port map (
@@ -511,12 +515,13 @@ begin
             stop    => '0',
             data    => LU_in,
             c_new   => c_new,
+            c_add   => c_add,
             rd_en   => LU_rd,
             tanh_c  => lu_reading,
             h_new   => h_new
         );
         
-    LU_ad <= c_new.data (p+1 downto p-6);
+    LU_ad <= c_add.data (p+1 downto p-6);
         
     m2: lut
         port map (
