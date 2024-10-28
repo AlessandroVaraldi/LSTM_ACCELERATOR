@@ -1,0 +1,42 @@
+for data_point in sequence:
+	for cell in cells:
+		for gate in range(0,4):
+			for input in inputs:
+				if input is first:
+					mac = input * weight (cell, gate, input) + bias (cell, gate)
+				else:
+					mac = input * weight (cell, gate, input) + mac
+
+
+		if mac is ready:
+			if mac.gate = candidate_memory:
+				activation = tanh(abs(mac))
+			else
+				activation = 0.5 + 0.5 * tanh(abs(mac))
+
+		if activation is ready:
+			case mac.gate is
+				forget:
+					forget_gate = activation
+				input:
+					input_gate = activation
+				candidate_memory:
+					candidate_memory = activation
+				output:					
+					output_gate = activation
+
+		if forget_gate is ready:
+			cell_state = cell_state * forget_gate
+
+		if input_gate and candidate_memory is ready:
+			cell_state = cell_state + input_gate * candidate_memory
+
+		if cell_state is ready:
+			cell_state = tanh(cell_state)
+
+		if output_gate is ready:
+			cell_output = output_gate * cell_state
+
+			
+		
+			
