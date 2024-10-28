@@ -14,7 +14,8 @@ entity LSTM_unit is
         start       : in  std_logic;
         stop        : in  std_logic;
         data        : in  dataflow;
-        c_new       : buffer dataflow;
+        c_new       : out dataflow;
+        c_add       : out dataflow;
         rd_en       : out std_logic;
         tanh_c      : in  dataflow;
         h_new       : out dataflow
@@ -50,6 +51,18 @@ architecture Behavioral of LSTM_unit is
             flags  	: out std_logic_vector (4 downto 0)
         );
     end component;
+    
+    component address_cnv is
+        port
+        (
+            clk:        in  std_logic;
+            rst:        in  std_logic;
+            data_i:     in  dataflow;
+            data_o:     out dataflow
+        );
+    end component;
+    
+    signal cnv: dataflow;
 
     signal c_reg, f_reg, i_reg, z_reg, o_reg: std_logic_vector(2**n downto 0);
     signal c_df, f_df, i_df, z_df, o_df: dataflow;
@@ -80,21 +93,40 @@ begin
     
     process (state, start, stop)
     begin
-        f_reg <= (others => '0');
-        i_reg <= (others => '0');
-        z_reg <= (others => '0');
-        o_reg <= (others => '0');
-        c_reg <= (others => '0');
-        cf_reg <= (others => '0');
-        iz_reg <= (others => '0');
-        c_reg <= (others => '0');
-        thc_reg <= (others => '0');
         case state is
             when RESET =>
+                f_reg <= (others => '0');
+                i_reg <= (others => '0');
+                z_reg <= (others => '0');
+                o_reg <= (others => '0');
+                c_reg <= (others => '0');
+                cf_reg <= (others => '0');
+                iz_reg <= (others => '0');
+                c_reg <= (others => '0');
+                thc_reg <= (others => '0');
+                next_state <= IDLE;
             when IDLE =>
             
                 if start = '1' and data.flag = '1' then
-                    
+                
+                    case data.gate is
+                        when "100" =>
+                            f_reg (2**n-1 downto 0) <= data.data;
+                            f_reg (2**n) <= data.flag;
+                        when "101" =>
+                            i_reg (2**n-1 downto 0) <= data.data;
+                            i_reg (2**n) <= data.flag;
+                        when "110" =>
+                            z_reg (2**n-1 downto 0) <= data.data;
+                            z_reg (2**n) <= data.flag;
+                        when "111" =>
+                            o_reg (2**n-1 downto 0) <= data.data;
+                            o_reg (2**n) <= data.flag;
+                        when "010" =>
+                            c_reg (2**n-1 downto 0) <= data.data;
+                            c_reg (2**n) <= data.flag;
+                        when others=>
+                    end case;
                     next_state <= PIPELINE;
                 
                 else
@@ -134,8 +166,8 @@ begin
                     iz_reg (2**n-1 downto 0) <= iz_df.data;
                 end if;
                 
-                if c_new.flag = '1' then
-                    c_reg (2**n-1 downto 0) <= c_new.data;
+                if sum.flag = '1' then
+                    c_reg (2**n-1 downto 0) <= sum.data;
                 end if;
                 
                 if tanh_c.flag = '1' then
@@ -146,24 +178,24 @@ begin
         end case;
     end process;
         
-    f_df.data <= c_reg (2**n-1 downto 0);
-    f_df.flag <= c_reg (2**n);
+    f_df.data <= f_reg (2**n-1 downto 0);
+    f_df.flag <= f_reg (2**n);
     f_df.gate <= "100";
     
-    i_df.data <= c_reg (2**n-1 downto 0);
-    i_df.flag <= c_reg (2**n);
+    i_df.data <= i_reg (2**n-1 downto 0);
+    i_df.flag <= i_reg (2**n);
     i_df.gate <= "101";
     
-    z_df.data <= c_reg (2**n-1 downto 0);
-    z_df.flag <= c_reg (2**n);
+    z_df.data <= z_reg (2**n-1 downto 0);
+    z_df.flag <= z_reg (2**n);
     z_df.gate <= "110";
     
-    o_df.data <= c_reg (2**n-1 downto 0);
-    o_df.flag <= c_reg (2**n);
+    o_df.data <= o_reg (2**n-1 downto 0);
+    o_df.flag <= o_reg (2**n);
     o_df.gate <= "111";
     
     c_df.data <= c_reg (2**n-1 downto 0);
-    c_df.flag <= c_reg (2**n);
+    c_df.flag <= '1';
     c_df.gate <= "010";
     
     u0: mul_i32
@@ -200,7 +232,17 @@ begin
 		);
 		
 	c_new <= sum;	
-	rd_en <= c_new.flag;
+	
+	cn: address_cnv
+        port map (
+            clk     => clk,
+            rst     => rst,
+            data_i  => sum,
+            data_o  => cnv
+        );
+        
+    c_add <= cnv;
+	rd_en <= cnv.flag;
 		
 	-- o might need a shift register
 		

@@ -1,7 +1,7 @@
 -------------------------------------
-| Tool Version : Vivado v.2024.1.1
-| Date         : Wed Oct 16 11:54:14 2024
-| Host         : LAPTOP-0EGU0TU7
+| Tool Version : Vivado v.2024.1.2
+| Date         : Mon Oct 28 12:32:45 2024
+| Host         : vivobook
 | Design       : design_1
 | Device       : xc7k70t-fbv676-1--
 -------------------------------------

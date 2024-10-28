@@ -20,6 +20,7 @@ vhdl xil_defaultlib  \
 "../../../../LSTM_ACCELERATOR.srcs/sources_1/new/lut.vhd" \
 "../../../../LSTM_ACCELERATOR.srcs/sources_1/new/mul_i32.vhd" \
 "../../../../LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/address_cnv.vhd" \
 "../../../../LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_test.vhd" \
 
 # Do not sort compile order

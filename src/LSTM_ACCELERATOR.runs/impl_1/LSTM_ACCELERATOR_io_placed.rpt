@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version              : Vivado v.2024.1.1 (win64) Build 5094488 Fri Jun 14 08:59:21 MDT 2024
-| Date                      : Wed Oct 16 11:54:16 2024
-| Host                      : LAPTOP-0EGU0TU7 running 64-bit major release  (build 9200)
+| Tool Version              : Vivado v.2024.1.2 (lin64) Build 5164865 Thu Sep  5 14:36:28 MDT 2024
+| Date                      : Mon Oct 28 12:32:51 2024
+| Host                      : vivobook running 64-bit Ubuntu 24.04.1 LTS
 | Command                   : report_io -file LSTM_ACCELERATOR_io_placed.rpt
 | Design                    : LSTM_ACCELERATOR
 | Device                    : xc7k70t

@@ -22,24 +22,24 @@ end Activation_unit;
 
 architecture Behavioral of Activation_unit is
 
-    component fifo_dataflow is
-        generic (
-           DEPTH : integer := 16 -- Profondità della FIFO
-        );
-        port (
-           clk      : in  std_logic;
-           rst      : in  std_logic;
-           wr_en    : in  std_logic; -- Segnale di abilitazione per la scrittura
-           rd_en    : in  std_logic; -- Segnale di abilitazione per la lettura
-           data_in  : in  dataflow; -- Dati in ingresso (32 bit)
-           data_out : out dataflow; -- Dati in uscita (32 bit)
-           full     : buffer std_logic; -- Indicatore di FIFO piena
-           empty    : buffer std_logic  -- Indicatore di FIFO vuota
-        );
-    end component;
+--    component fifo_dataflow is
+--        generic (
+--           DEPTH : integer := 16 -- Profondità della FIFO
+--        );
+--        port (
+--           clk      : in  std_logic;
+--           rst      : in  std_logic;
+--           wr_en    : in  std_logic; -- Segnale di abilitazione per la scrittura
+--           rd_en    : in  std_logic; -- Segnale di abilitazione per la lettura
+--           data_in  : in  dataflow; -- Dati in ingresso (32 bit)
+--           data_out : out dataflow; -- Dati in uscita (32 bit)
+--           full     : buffer std_logic; -- Indicatore di FIFO piena
+--           empty    : buffer std_logic  -- Indicatore di FIFO vuota
+--        );
+--    end component;
     
-    signal fifo_out: dataflow;
-    signal fifo_full, fifo_empty: std_logic;
+--    signal fifo_out: dataflow;
+--    signal fifo_full, fifo_empty: std_logic;
 
     component dff_chain is
         generic (
@@ -50,6 +50,16 @@ architecture Behavioral of Activation_unit is
            reset : in std_logic;
            start : in std_logic;
            q : out std_logic_vector(N-1 downto 0)
+        );
+    end component;
+    
+    component address_cnv is
+        port
+        (
+            clk:        in  std_logic;
+            rst:        in  std_logic;
+            data_i:     in  dataflow;
+            data_o:     out dataflow
         );
     end component;
     
@@ -100,7 +110,7 @@ architecture Behavioral of Activation_unit is
     signal tansig, posneg: std_logic;
     signal tansig_v, posneg_v: std_logic_vector (7 downto 0);
     
-    signal en_reg, flag: std_logic;
+    signal act_cn, act_reg: dataflow;
 
     type state_type is (RESET, IDLE, PIPELINE);
     signal state, next_state: state_type;
@@ -116,9 +126,8 @@ begin
         end if;
     end process;
     
-    process (state, start, reading, fifo_out)
+    process (state, start, reading)
     begin
-        en_reg <= '0';
         case state is
             when RESET =>
             
@@ -137,21 +146,33 @@ begin
                 end if;
                 
             when PIPELINE =>
+            
+                if act_cn.flag = '1' then
+                    act_reg <= act_cn;
+                end if;
 
                 if reading.flag = '1' then
-                    en_reg <= '1';
+                    read_df.data <= reading.data;
+                    read_df.gate <= act_reg.gate;
+                    read_df.flag <= reading.flag;
                     --read_reg (2**n-1 downto 0) <= reading.data;
-                end if;
-                
-                if fifo_out.flag = '1' then
-                    --read_reg (2**n) <= fifo_out.flag;
-                    --read_reg (2**n+3 downto 2**n+1) <= fifo_out.gate;
+                else
+                    
+                    read_df.flag <= '0';
                 end if;
 
                 next_state <= PIPELINE;
             when OTHERS =>
         end case;
     end process;
+    
+    cn: address_cnv
+        port map (
+            clk     => clk,
+            rst     => rst,
+            data_i  => act_in,
+            data_o  => act_cn
+        );
     
     -- TODO: overflow e underflow address
     process (rst, clk)
@@ -160,48 +181,35 @@ begin
             rd_en <= '0';
             address <= (others => '0');
         elsif rising_edge(clk) then
-            read_df.flag <= '0';  
-            if start = '1' and act_in.flag = '1' then
-                address <= act_in.data (p+1 downto p-6);
+            if act_cn.flag = '1' then
+                address <= act_cn.data (p+1 downto p-6);
                 rd_en <= '1';
             else
                 address <= (others => '0');
                 rd_en <= '0';
             end if;
-            if en_reg = '1' then
-                read_df.data <= reading.data;
-                read_df.gate <= fifo_out.gate;
-            else
-                read_df.flag <= flag;  
-            end if;
-            if reading.flag = '1' then
-                flag <= '1';
-            else
-                flag <= '0';
-            end if;
         end if;
-        
     end process;
         
-    m0: fifo_dataflow
-        generic map (DEPTH => 16)
-        port map (
-            clk     => clk,
-            rst     => rst,
-            wr_en   => act_in.flag,
-            rd_en   => reading.flag,
-            data_in => act_in,
-            data_out => fifo_out,
-            full    => fifo_full,
-            empty   => fifo_empty
-        );
+--    m0: fifo_dataflow
+--        generic map (DEPTH => 16)
+--        port map (
+--            clk     => clk,
+--            rst     => rst,
+--            wr_en   => act_in.flag,
+--            rd_en   => reading.flag,
+--            data_in => act_in,
+--            data_out => fifo_out,
+--            full    => fifo_full,
+--            empty   => fifo_empty
+--        );
         
     --read_df.data <= read_reg (2**n-1 downto 0);
     --read_df.flag <= read_reg (2**n);
     --read_df.gate <= read_reg (2**n+3 downto 2**n+1);
     
-    tansig <= '1' when fifo_out.gate = "100" or fifo_out.gate = "101" or fifo_out.gate = "111" else '0';
-    posneg <= '1' when fifo_out.data(31) = '1' else '0';
+    tansig <= '1' when act_reg.gate = "100" or act_reg.gate = "101" or act_reg.gate = "111" else '0';
+    posneg <= '1' when act_reg.data(31) = '1' else '0';
     
     f0: dff_chain 
         generic map (n => 8)

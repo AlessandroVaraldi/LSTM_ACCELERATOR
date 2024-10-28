@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2024.1.1 (win64) Build 5094488 Fri Jun 14 08:59:21 MDT 2024
-| Date             : Wed Oct 16 11:54:32 2024
-| Host             : LAPTOP-0EGU0TU7 running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2024.1.2 (lin64) Build 5164865 Thu Sep  5 14:36:28 MDT 2024
+| Date             : Mon Oct 28 12:33:14 2024
+| Host             : vivobook running 64-bit Ubuntu 24.04.1 LTS
 | Command          : report_power -file LSTM_ACCELERATOR_power_routed.rpt -pb LSTM_ACCELERATOR_power_summary_routed.pb -rpx LSTM_ACCELERATOR_power_routed.rpx
 | Design           : LSTM_ACCELERATOR
 | Device           : xc7k70tfbv676-1
@@ -30,11 +30,11 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.082        |
+| Total On-Chip Power (W)  | 0.080        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 0.001        |
-| Device Static (W)        | 0.081        |
+| Device Static (W)        | 0.079        |
 | Effective TJA (C/W)      | 1.9          |
 | Max Ambient (C)          | 84.8         |
 | Junction Temperature (C) | 25.2         |
@@ -53,15 +53,15 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      354 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      157 |     41000 |            0.38 |
-|   CARRY4       |    <0.001 |       32 |     10250 |            0.31 |
-|   Register     |    <0.001 |      144 |     82000 |            0.18 |
-|   Others       |     0.000 |       10 |       --- |             --- |
-| Signals        |    <0.001 |      301 |       --- |             --- |
+| Slice Logic    |    <0.001 |      386 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      153 |     41000 |            0.37 |
+|   CARRY4       |    <0.001 |       40 |     10250 |            0.39 |
+|   Register     |    <0.001 |      145 |     82000 |            0.18 |
+|   Others       |     0.000 |       11 |       --- |             --- |
+| Signals        |    <0.001 |      331 |       --- |             --- |
 | I/O            |    <0.001 |        4 |       300 |            1.33 |
-| Static Power   |     0.081 |          |           |                 |
-| Total          |     0.082 |          |           |                 |
+| Static Power   |     0.079 |          |           |                 |
+| Total          |     0.080 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 | Vccaux    |       1.800 |     0.012 |       0.000 |      0.012 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vcco18    |       1.800 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |

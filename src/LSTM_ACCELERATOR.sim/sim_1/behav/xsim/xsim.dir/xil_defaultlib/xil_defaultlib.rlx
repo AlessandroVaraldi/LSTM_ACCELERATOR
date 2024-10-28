@@ -2,13 +2,14 @@
 2020.2
 Sep  5 2024
 14:48:23
-/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/Activation_unit.vhd,1729774353,vhdl,,,,activation_unit,,,,,,,,
-/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR.vhd,1729771693,vhdl,,,,lstm_accelerator,,,,,,,,
+/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/Activation_unit.vhd,1730114135,vhdl,,,,activation_unit,,,,,,,,
+/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR.vhd,1730112642,vhdl,,,,lstm_accelerator,,,,,,,,
 /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_test.vhd,1729080453,vhdl,,,,lstm_accelerator_test,,,,,,,,
-/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit.vhd,1729771792,vhdl,,,,lstm_unit,,,,,,,,
+/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit.vhd,1730112744,vhdl,,,,lstm_unit,,,,,,,,
 /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/addr_generator.vhd,1729512841,vhdl,,,,addr_generator,,,,,,,,
+/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/address_cnv.vhd,1730114294,vhdl,,,,address_cnv,,,,,,,,
 /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/brom.vhd,1728981267,vhdl,,,,brom,,,,,,,,
-/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/custom_types.vhd,1729080562,vhdl,/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/sum_i32.vhd,,,custom_types,,,,,,,,
+/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/custom_types.vhd,1729080562,vhdl,/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/address_cnv.vhd,,,custom_types,,,,,,,,
 /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd,1728988366,vhdl,,,,dff_chain,,,,,,,,
 /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd,1718802077,vhdl,,,,dflipflop,,,,,,,,
 /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/fifo.vhd,1729506199,vhdl,,,,fifo_dataflow,,,,,,,,

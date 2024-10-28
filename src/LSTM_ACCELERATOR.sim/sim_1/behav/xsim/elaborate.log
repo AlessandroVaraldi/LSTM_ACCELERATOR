@@ -22,7 +22,7 @@ Compiling architecture behavioral of entity xil_defaultlib.wrom [\wrom(n=3,m=4)\
 Compiling architecture behavioral of entity xil_defaultlib.brom [\brom(n=4)\]
 Compiling architecture behavioral of entity xil_defaultlib.mac_i32 [\mac_i32(n=5,p=24)\]
 Compiling architecture behavioral of entity xil_defaultlib.mac_unit [\mac_unit(n=5,p=24)\]
-Compiling architecture behavioral of entity xil_defaultlib.fifo_dataflow [fifo_dataflow_default]
+Compiling architecture behavioral of entity xil_defaultlib.address_cnv [address_cnv_default]
 Compiling architecture behavioral of entity xil_defaultlib.dff_chain [dff_chain_default]
 Compiling architecture behavioral of entity xil_defaultlib.inv_i32 [inv_i32_default]
 Compiling architecture behavioral of entity xil_defaultlib.mul2_i32 [\mul2_i32(n=5,p=24)\]
