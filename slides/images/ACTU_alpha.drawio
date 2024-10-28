@@ -33,7 +33,7 @@
             <mxPoint y="7" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="dSgf6_MaAZvb21dx-kvH-29" value="&lt;div&gt;COEFF&lt;/div&gt;&lt;div&gt;TANH&lt;/div&gt;&lt;div&gt;LUT&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="dSgf6_MaAZvb21dx-kvH-29" value="&lt;div&gt;TANH&lt;/div&gt;&lt;div&gt;LUT&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="140" y="80" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dSgf6_MaAZvb21dx-kvH-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dSgf6_MaAZvb21dx-kvH-31">
