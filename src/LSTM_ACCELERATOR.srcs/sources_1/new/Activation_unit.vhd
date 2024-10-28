@@ -110,8 +110,6 @@ architecture Behavioral of Activation_unit is
     signal tansig, posneg: std_logic;
     signal tansig_v, posneg_v: std_logic_vector (7 downto 0);
     
-    signal en_reg, flag: std_logic;
-    
     signal act_cn, act_reg: dataflow;
 
     type state_type is (RESET, IDLE, PIPELINE);
@@ -130,7 +128,6 @@ begin
     
     process (state, start, reading)
     begin
-        en_reg <= '0';
         case state is
             when RESET =>
             
@@ -155,8 +152,13 @@ begin
                 end if;
 
                 if reading.flag = '1' then
-                    read_df <= reading;
+                    read_df.data <= reading.data;
+                    read_df.gate <= act_reg.gate;
+                    read_df.flag <= reading.flag;
                     --read_reg (2**n-1 downto 0) <= reading.data;
+                else
+                    
+                    read_df.flag <= '0';
                 end if;
 
                 next_state <= PIPELINE;
@@ -179,7 +181,7 @@ begin
             rd_en <= '0';
             address <= (others => '0');
         elsif rising_edge(clk) then
-            read_df.flag <= '0';  
+
             if act_cn.flag = '1' then
                 address <= act_cn.data (p+1 downto p-6);
                 rd_en <= '1';
@@ -187,6 +189,7 @@ begin
                 address <= (others => '0');
                 rd_en <= '0';
             end if;
+
             
             if reading.flag = '1' then
                 flag <= '1';
@@ -194,7 +197,6 @@ begin
                 flag <= '0';
             end if;
         end if;
-        
     end process;
         
 --    m0: fifo_dataflow

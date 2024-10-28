@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.runs/synth_1/LSTM_ACCELERATOR.tcl"
+  variable script "/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.runs/synth_1/LSTM_ACCELERATOR.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,42 +56,43 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 3
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7k70tfbv676-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.cache/wt [current_project]
-set_property parent.project_path C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.xpr [current_project]
+set_property webtalk.parent_dir /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.cache/wt [current_project]
+set_property parent.project_path /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
-set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.cache/ip [current_project]
+set_property target_language VHDL [current_project]
+set_property ip_output_repo /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/custom_types.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/Activation_unit.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/addr_generator.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/brom.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/fifo.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/h_RAM.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/inv_i32.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/mac_i32.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/mul2_i32.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/sum_i32.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/wrom.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/xrom.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/shift_register.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR.vhd
-  C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/custom_types.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/Activation_unit.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/addr_generator.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/brom.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/fifo.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/h_RAM.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/inv_i32.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_i32.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mul2_i32.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/sum_i32.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/wrom.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/xrom.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/shift_register.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/lut.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mul_i32.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit.vhd
+  /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/address_cnv.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -102,12 +103,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/XDC1.xdc
-set_property used_in_implementation false [get_files C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/sources_1/new/XDC1.xdc]
+read_xdc /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/XDC1.xdc
+set_property used_in_implementation false [get_files /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/XDC1.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/aleva/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/LSTM_ACCELERATOR.srcs/utils_1/imports/synth_1/LSTM_ACCELERATOR.dcp
+read_checkpoint -auto_incremental -incremental /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/utils_1/imports/synth_1/LSTM_ACCELERATOR.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

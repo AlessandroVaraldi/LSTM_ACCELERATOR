@@ -41,7 +41,7 @@ architecture Behavioral of address_cnv is
 
 begin
 
-    data_inv.data <= std_logic_vector(unsigned(not(data_i.data)) + 1);
+    data_inv.data <= std_logic_vector(signed(not(data_i.data)) + 1);
     data_inv.gate <= data_i.gate;
     data_inv.flag <= data_i.flag;
 
@@ -53,7 +53,7 @@ begin
             data_o.flag <= '0';
         elsif rising_edge(clk) then
             if data_i.flag = '1' then
-                if unsigned(data_i.data) > 0 or unsigned(data_i.data) = 0 then
+                if signed(data_i.data) > 0 or signed(data_i.data) = 0 then
                     data_o <= data_i;
                 else
                     data_o <= data_inv;

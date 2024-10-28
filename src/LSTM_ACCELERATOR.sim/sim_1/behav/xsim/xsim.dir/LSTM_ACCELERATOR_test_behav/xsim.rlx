@@ -1,6 +1,10 @@
 
 { 
+<<<<<<< HEAD
     crc :  9120573988919464350  , 
+=======
+    crc :  227316652923088297  , 
+>>>>>>> 346f26ebc544d91ba663b6868c2a78304c7c9ace
     ccp_crc :  0  , 
     cmdline : " --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot LSTM_ACCELERATOR_test_behav xil_defaultlib.LSTM_ACCELERATOR_test" , 
     buildDate : "Sep  5 2024" , 

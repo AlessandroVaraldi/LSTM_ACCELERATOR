@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+=======
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/address_cnv.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'address_cnv'
+>>>>>>> 346f26ebc544d91ba663b6868c2a78304c7c9ace
