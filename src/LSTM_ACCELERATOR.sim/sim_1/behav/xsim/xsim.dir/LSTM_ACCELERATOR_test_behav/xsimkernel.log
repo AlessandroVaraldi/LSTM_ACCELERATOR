@@ -1,4 +1,7 @@
-Running: xsim.dir/LSTM_ACCELERATOR_test_behav/xsimk -simmode gui -wdb LSTM_ACCELERATOR_test_behav.wdb -simrunnum 0 -socket 60171
+Running: xsim.dir/LSTM_ACCELERATOR_test_behav/xsimk -simmode gui -wdb LSTM_ACCELERATOR_test_behav.wdb -simrunnum 0 -socket 44497
 Design successfully loaded
 Design Loading Memory Usage: 20420 KB (Peak: 20708 KB)
-Design Loading CPU Usage: 40 ms
+Design Loading CPU Usage: 30 ms
+Simulation completed
+Simulation Memory Usage: 110356 KB (Peak: 159688 KB)
+Simulation CPU Usage: 40 ms

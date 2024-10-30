@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity brom is
-    generic (n: integer; len: integer);
+    generic (n: integer; p: integer; len: integer);
     port (
         clk : in STD_LOGIC;
         addr : in UNSIGNED(len-1 downto 0);
@@ -39,5 +39,5 @@ begin
             temp <= rom(to_integer(addr));
         end if;
     end process;
-    data <= temp (31 downto 31 - (2**n) + 1);
+    data <= temp (2**n - 1 + 24 - p downto 24 - p);
 end Behavioral;

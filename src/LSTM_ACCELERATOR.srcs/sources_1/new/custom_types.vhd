@@ -24,9 +24,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 package custom_types is
-
-    --constant precision: integer := 5;
-    --constant binarypoint: integer := 24; 
     
     constant precision: integer := 5;
 

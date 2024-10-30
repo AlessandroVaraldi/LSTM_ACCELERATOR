@@ -45,8 +45,6 @@ end LSTM_ACCELERATOR;
 
 architecture Behavioral of LSTM_ACCELERATOR is
 
-    signal debug_signal : integer := 0;
-
     function log2ceil(n : integer) return integer is
         variable result : integer := 0;
         variable temp : integer := n - 1;  -- Per arrotondare verso l'alto
@@ -138,7 +136,7 @@ architecture Behavioral of LSTM_ACCELERATOR is
     signal adg_en, adg_rd, sel: std_logic := '1';
     
     component wrom is
-        generic (n: integer; i: integer; c: integer);
+        generic (n: integer; p: integer; i: integer; c: integer);
         port (
             clk : in STD_LOGIC;
             addr : in UNSIGNED((i+c)-1 downto 0);
@@ -150,7 +148,7 @@ architecture Behavioral of LSTM_ACCELERATOR is
     signal w_out: std_logic_vector(2**n-1 downto 0);
     
     component brom is
-        generic (n: integer; len: integer);
+        generic (n: integer; p: integer; len: integer);
         port (
             clk : in STD_LOGIC;
             addr : in UNSIGNED(len-1 downto 0);
@@ -270,17 +268,6 @@ architecture Behavioral of LSTM_ACCELERATOR is
 
 begin
 
-    -- ## DEBUG ##
-    process
-        variable line_out : line;
-    begin
-        debug_signal <= bad_dim;  -- Assegnazione di un valore di esempio
-        write(line_out, string'("Debug: debug_signal = "));
-        write(line_out, debug_signal);  -- Stampa il valore di debug_signal
-        writeline(output, line_out);    -- Stampa la linea nella console
-        wait;  -- Per bloccare la simulazione
-    end process;
-        
     process (clk, rst)
     begin
         if rst = '1' then
@@ -478,6 +465,7 @@ begin
     m0: wrom
         generic map (
             n => n,
+            p => p,
             i => wad_dim, 
             c => bad_dim
         )
@@ -490,6 +478,7 @@ begin
     m1: brom
         generic map (
             n => n,
+            p => p,
             len => bad_dim
         )
         port map (
@@ -562,8 +551,8 @@ begin
             doutb       => lutb
         );
         
-    act_reading.data <= luta (31 downto 31 - (2**n) + 1);
-    lu_reading.data <= lutb (31 downto 31 - (2**n) + 1);
+    act_reading.data <= luta (2**n - 1 + 24 - p downto 24 - p);
+    lu_reading.data <= lutb (2**n - 1 + 24 - p downto 24 - p);
                   
     m3: h_ram
         generic map (

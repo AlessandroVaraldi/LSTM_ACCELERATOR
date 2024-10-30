@@ -22,6 +22,8 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_TEXTIO.ALL;  -- Pacchetto per scrivere STD_LOGIC
+use STD.TEXTIO.ALL;             -- Pacchetto generale per l'input/output di testo
 
 use work.custom_types.all;
 
@@ -30,6 +32,8 @@ entity LSTM_ACCELERATOR_test is
 end LSTM_ACCELERATOR_test;
 
 architecture Behavioral of LSTM_ACCELERATOR_test is
+
+    signal debug_signal : integer := 0;
 
     function mul_by_075(input : integer) return integer is
         variable temp : integer;
@@ -77,11 +81,22 @@ architecture Behavioral of LSTM_ACCELERATOR_test is
 
 begin
 
-    data_x(0) <= data(159 downto 159 - (2**precision) + 1);
-    data_x(1) <= data(127 downto 127 - (2**precision) + 1);
-    data_x(2) <= data(95 downto 95 - (2**precision) + 1);
-    data_x(3) <= data(63 downto 63 - (2**precision) + 1);
-    data_x(4) <= data(31 downto 31 - (2**precision) + 1);
+    -- ## DEBUG ##
+    process
+        variable line_out : line;
+    begin
+        debug_signal <= 2**precision - 1 + 24 - point;  -- Assegnazione di un valore di esempio
+        write(line_out, string'("Debug: debug_signal = "));
+        write(line_out, debug_signal);  -- Stampa il valore di debug_signal
+        writeline(output, line_out);    -- Stampa la linea nella console
+        wait;  -- Per bloccare la simulazione
+    end process;
+
+    data_x(0) <= data (2**precision - 1 + 24 - point + 128 downto 24 - point + 128);
+    data_x(1) <= data (2**precision - 1 + 24 - point + 96 downto 24 - point + 96);
+    data_x(2) <= data (2**precision - 1 + 24 - point + 64 downto 24 - point + 64);
+    data_x(3) <= data (2**precision - 1 + 24 - point + 32 downto 24 - point + 32);
+    data_x(4) <= data (2**precision - 1 + 24 - point downto 24 - point);
     
     m0: xrom
         port map (
@@ -93,7 +108,7 @@ begin
     u0: LSTM_ACCELERATOR
         generic map (
             inputs  => 5,
-            cells   => 1,
+            cells   => 3,
             n       => precision,
             p       => point
         )
