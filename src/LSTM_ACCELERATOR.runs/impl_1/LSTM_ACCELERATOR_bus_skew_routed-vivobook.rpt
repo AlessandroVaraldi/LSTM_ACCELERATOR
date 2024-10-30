@@ -1,0 +1,16 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1.2 (lin64) Build 5164865 Thu Sep  5 14:36:28 MDT 2024
+| Date         : Mon Oct 28 12:33:14 2024
+| Host         : vivobook running 64-bit Ubuntu 24.04.1 LTS
+| Command      : report_bus_skew -warn_on_violation -file LSTM_ACCELERATOR_bus_skew_routed.rpt -pb LSTM_ACCELERATOR_bus_skew_routed.pb -rpx LSTM_ACCELERATOR_bus_skew_routed.rpx
+| Design       : LSTM_ACCELERATOR
+| Device       : 7k70t-fbv676
+| Speed File   : -1  PRODUCTION 1.12 2017-02-17
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+No bus skew constraints
+

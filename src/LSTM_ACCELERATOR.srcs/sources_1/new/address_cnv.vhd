@@ -42,6 +42,7 @@ architecture Behavioral of address_cnv is
 begin
 
     data_inv.data <= std_logic_vector(signed(not(data_i.data)) + 1);
+    
     data_inv.gate <= data_i.gate;
     data_inv.flag <= data_i.flag;
 

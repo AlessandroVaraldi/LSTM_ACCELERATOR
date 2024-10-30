@@ -5,9 +5,6 @@ Running: /home/alessandro/Tools/Xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
-<<<<<<< HEAD
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
-=======
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
@@ -16,13 +13,14 @@ Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
 Compiling package xil_defaultlib.custom_types
+Compiling package ieee.std_logic_textio
 Compiling architecture behavioral of entity xil_defaultlib.xrom [xrom_default]
 Compiling architecture behavioral of entity xil_defaultlib.shift_register [\shift_register(l=10,n=5)\]
-Compiling architecture behavioral of entity xil_defaultlib.addr_generator [\addr_generator(cells=3,inputs=5...]
+Compiling architecture behavioral of entity xil_defaultlib.addr_generator [\addr_generator(cells=1,inputs=5...]
 Compiling architecture behavioral of entity xil_defaultlib.dflipflop [dflipflop_default]
 Compiling architecture behavioral of entity xil_defaultlib.dff_chain [\dff_chain(n=5)\]
-Compiling architecture behavioral of entity xil_defaultlib.wrom [\wrom(n=3,m=4)\]
-Compiling architecture behavioral of entity xil_defaultlib.brom [\brom(n=4)\]
+Compiling architecture behavioral of entity xil_defaultlib.wrom [\wrom(n=5,i=3,c=2)\]
+Compiling architecture behavioral of entity xil_defaultlib.brom [\brom(n=5,len=2)\]
 Compiling architecture behavioral of entity xil_defaultlib.mac_i32 [\mac_i32(n=5,p=24)\]
 Compiling architecture behavioral of entity xil_defaultlib.mac_unit [\mac_unit(n=5,p=24)\]
 Compiling architecture behavioral of entity xil_defaultlib.address_cnv [address_cnv_default]
@@ -34,8 +32,7 @@ Compiling architecture behavioral of entity xil_defaultlib.Activation_unit [\Act
 Compiling architecture behavioral of entity xil_defaultlib.mul_i32 [\mul_i32(n=5,p=24)\]
 Compiling architecture behavioral of entity xil_defaultlib.LSTM_unit [\LSTM_unit(n=5,p=24)\]
 Compiling architecture behavioral of entity xil_defaultlib.lut [lut_default]
-Compiling architecture behavioral of entity xil_defaultlib.h_RAM [\h_RAM(n=2)\]
-Compiling architecture behavioral of entity xil_defaultlib.LSTM_ACCELERATOR [lstm_accelerator_default]
+Compiling architecture behavioral of entity xil_defaultlib.h_RAM [\h_RAM(n=5,len=0)\]
+Compiling architecture behavioral of entity xil_defaultlib.LSTM_ACCELERATOR [\LSTM_ACCELERATOR(cells=1)\]
 Compiling architecture behavioral of entity xil_defaultlib.lstm_accelerator_test
 Built simulation snapshot LSTM_ACCELERATOR_test_behav
->>>>>>> 346f26ebc544d91ba663b6868c2a78304c7c9ace

@@ -27,16 +27,18 @@ package custom_types is
 
     --constant precision: integer := 5;
     --constant binarypoint: integer := 24; 
+    
+    constant precision: integer := 5;
 
     type weight_array is record
-        w_x: std_logic_vector (31 downto 0);
-        b_x: std_logic_vector (31 downto 0);
-        w_h: std_logic_vector (31 downto 0);
-        b_h: std_logic_vector (31 downto 0);
+        w_x: std_logic_vector (2**precision-1 downto 0);
+        b_x: std_logic_vector (2**precision-1 downto 0);
+        w_h: std_logic_vector (2**precision-1 downto 0);
+        b_h: std_logic_vector (2**precision-1 downto 0);
     end record;
     
     type dataflow is record
-        data: std_logic_vector (31 downto 0);
+        data: std_logic_vector (2**precision-1 downto 0);
         flag: std_logic;
         gate: std_logic_vector (2 downto 0);
         
@@ -49,6 +51,6 @@ package custom_types is
         -- o gate   : 111
     end record;
     
-    type input_array is array (0 to 4) of std_logic_vector (31 downto 0);
+    type input_array is array (0 to 4) of std_logic_vector (2**precision-1 downto 0);
     
  end custom_types;

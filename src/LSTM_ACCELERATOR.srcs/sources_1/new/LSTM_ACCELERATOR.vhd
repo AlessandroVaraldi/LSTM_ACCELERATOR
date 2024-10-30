@@ -21,11 +21,18 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_TEXTIO.ALL;  -- Pacchetto per scrivere STD_LOGIC
+use STD.TEXTIO.ALL;             -- Pacchetto generale per l'input/output di testo
 
 use work.custom_types.all;
 
 entity LSTM_ACCELERATOR is
-    generic(inputs: positive := 5; cells: positive := 3);
+    generic(
+        inputs: positive := 5; 
+        cells: positive := 3;
+        n: positive := 5;
+        p: positive := 24
+    );
     port 
     (
         clk         : in  std_logic;
@@ -38,6 +45,8 @@ end LSTM_ACCELERATOR;
 
 architecture Behavioral of LSTM_ACCELERATOR is
 
+    signal debug_signal : integer := 0;
+
     function log2ceil(n : integer) return integer is
         variable result : integer := 0;
         variable temp : integer := n - 1;  -- Per arrotondare verso l'alto
@@ -48,9 +57,6 @@ architecture Behavioral of LSTM_ACCELERATOR is
         end loop;
         return result;
     end function;
-    
-    constant n: integer := 5;
-    constant p: integer := 24;
     
     constant xdim: integer := inputs + cells;
     constant ydim: integer := cells * 4;
@@ -132,46 +138,47 @@ architecture Behavioral of LSTM_ACCELERATOR is
     signal adg_en, adg_rd, sel: std_logic := '1';
     
     component wrom is
-        generic (n: integer; m: integer);
+        generic (n: integer; i: integer; c: integer);
         port (
             clk : in STD_LOGIC;
-            addr : in UNSIGNED((m+n)-1 downto 0);
-            data : out STD_LOGIC_VECTOR(31 downto 0)
+            addr : in UNSIGNED((i+c)-1 downto 0);
+            data : out STD_LOGIC_VECTOR(2**n-1 downto 0)
         );
     end component;
     
     signal w_ad: std_logic_vector ((wad_dim+bad_dim)-1 downto 0);
-    signal w_out: std_logic_vector(31 downto 0);
+    signal w_out: std_logic_vector(2**n-1 downto 0);
     
     component brom is
-        generic (n: integer);
+        generic (n: integer; len: integer);
         port (
             clk : in STD_LOGIC;
-            addr : in UNSIGNED(n-1 downto 0);
-            data : out STD_LOGIC_VECTOR(31 downto 0)
+            addr : in UNSIGNED(len-1 downto 0);
+            data : out STD_LOGIC_VECTOR(2**n-1 downto 0)
         );
     end component;
     
     signal b_ad: std_logic_vector (bad_dim-1 downto 0);
-    signal b_out: std_logic_vector(31 downto 0);
+    signal b_out: std_logic_vector(2**n-1 downto 0);
     
     component h_ram is
         generic (
-            n           : integer
+            n           : integer;
+            len         : integer
         );
         port (
             clk         : in  std_logic;
             we          : in  std_logic;
-            wr_addr     : in  std_logic_vector(n-1 downto 0);
-            rd_addr     : in  std_logic_vector(n-1 downto 0);
-            din         : in  std_logic_vector (31 downto 0);
-            dout        : out std_logic_vector (31 downto 0)
+            wr_addr     : in  std_logic_vector(len-1 downto 0);
+            rd_addr     : in  std_logic_vector(len-1 downto 0);
+            din         : in  std_logic_vector (2**n-1 downto 0);
+            dout        : out std_logic_vector (2**n-1 downto 0)
         );
     end component;
     
     signal h_we: std_logic;
-    signal h_wad, h_rad: std_logic_vector (1 downto 0);
-    signal h_in, h_out: std_logic_vector(31 downto 0);
+    signal h_wad, h_rad: std_logic_vector (had_dim-1 downto 0);
+    signal h_in, h_out: std_logic_vector(2**n-1 downto 0);
     
     component dff_chain is
         generic (
@@ -253,6 +260,8 @@ architecture Behavioral of LSTM_ACCELERATOR is
             doutb   : out STD_LOGIC_VECTOR (31 downto 0)
         );
     end component;
+    
+    signal luta, lutb: std_logic_vector (31 downto 0);
 
     signal step: std_logic;
     
@@ -260,6 +269,17 @@ architecture Behavioral of LSTM_ACCELERATOR is
     signal state, next_state: state_type;
 
 begin
+
+    -- ## DEBUG ##
+    process
+        variable line_out : line;
+    begin
+        debug_signal <= bad_dim;  -- Assegnazione di un valore di esempio
+        write(line_out, string'("Debug: debug_signal = "));
+        write(line_out, debug_signal);  -- Stampa il valore di debug_signal
+        writeline(output, line_out);    -- Stampa la linea nella console
+        wait;  -- Per bloccare la simulazione
+    end process;
         
     process (clk, rst)
     begin
@@ -456,7 +476,11 @@ begin
     end generate;
     
     m0: wrom
-        generic map (n => wad_dim, m => bad_dim)
+        generic map (
+            n => n,
+            i => wad_dim, 
+            c => bad_dim
+        )
         port map (
             clk         => clk,
             addr        => unsigned(w_ad),
@@ -464,7 +488,10 @@ begin
         );
         
     m1: brom
-        generic map (n => bad_dim)
+        generic map (
+            n => n,
+            len => bad_dim
+        )
         port map (
             clk        => clk,
             addr       => unsigned(b_ad),
@@ -472,7 +499,7 @@ begin
         );
         
     u1: mac_unit
-        generic map (n => 5, p => p)
+        generic map (n => n, p => p)
         port map (
             clk         => clk,
             rst         => rst,
@@ -528,15 +555,21 @@ begin
             clka        => clk,
             addra       => act_ad,
             ena         => act_rd,
-            douta       => act_reading.data,
+            douta       => luta,
             clkb        => clk,
             addrb       => LU_ad,
             enb         => LU_rd,
-            doutb       => lu_reading.data
+            doutb       => lutb
         );
+        
+    act_reading.data <= luta (31 downto 31 - (2**n) + 1);
+    lu_reading.data <= lutb (31 downto 31 - (2**n) + 1);
                   
     m3: h_ram
-        generic map (n => had_dim)
+        generic map (
+            n => n,
+            len => had_dim
+        )
         port map (
             clk         => clk,
             we          => h_we,
@@ -547,5 +580,5 @@ begin
         );
         
     ready <= adg_rd or load_init;
-            
+
 end Behavioral;

@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1.2 (64-bit)
+# SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+# IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+# SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+# Start of session at: Mon Oct 28 12:31:52 2024
+# Process ID: 26535
+# Current directory: /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.runs/impl_1
+# Command line: vivado -log LSTM_ACCELERATOR.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source LSTM_ACCELERATOR.tcl -notrace
+# Log file: /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.runs/impl_1/LSTM_ACCELERATOR.vdi
+# Journal file: /home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.runs/impl_1/vivado.jou
+# Running On        :vivobook
+# Platform          :Ubuntu
+# Operating System  :Ubuntu 24.04.1 LTS
+# Processor Detail  :11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz
+# CPU Frequency     :1265.068 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :12223 MB
+# Swap memory       :4294 MB
+# Total Virtual     :16518 MB
+# Available Virtual :12677 MB
+#-----------------------------------------------------------
+source LSTM_ACCELERATOR.tcl -notrace

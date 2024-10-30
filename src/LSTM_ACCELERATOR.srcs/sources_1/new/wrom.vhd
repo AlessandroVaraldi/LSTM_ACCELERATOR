@@ -3,16 +3,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity wrom is
-    generic (n: integer; m: integer);
+    generic (n: integer; i: integer; c: integer);
     port (
         clk : in STD_LOGIC;
-        addr : in UNSIGNED((m+n)-1 downto 0);
-        data : out STD_LOGIC_VECTOR(31 downto 0)
+        addr : in UNSIGNED((i+c)-1 downto 0);
+        data : out STD_LOGIC_VECTOR(2**n-1 downto 0)
     );
 end wrom;
 
 architecture Behavioral of wrom is
-    type rom_type is array (0 to 2**(m+n)-1) of STD_LOGIC_VECTOR(31 downto 0);
+    --type rom_type is array (0 to 2**(i+c)-1) of STD_LOGIC_VECTOR(31 downto 0);
+    type rom_type is array (0 to 127) of STD_LOGIC_VECTOR(31 downto 0);
+    signal temp : std_logic_vector (31 downto 0);
     signal rom : rom_type := (
         X"FFE1348D",
         X"FFD75CDE",
@@ -147,7 +149,8 @@ begin
     process(clk)
     begin
         if rising_edge(clk) then
-            data <= rom(to_integer(addr));
+            temp <= rom(to_integer(addr));
         end if;
     end process;
+    data <= temp (31 downto 31 - (2**n) + 1);
 end Behavioral;

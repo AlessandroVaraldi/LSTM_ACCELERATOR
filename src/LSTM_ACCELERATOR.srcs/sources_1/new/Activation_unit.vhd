@@ -63,6 +63,8 @@ architecture Behavioral of Activation_unit is
         );
     end component;
     
+    signal point5: std_logic_vector (31 downto 0);
+    
     component mul2_i32 is 
         generic (n: integer; p: integer);
         port
@@ -109,7 +111,7 @@ architecture Behavioral of Activation_unit is
     
     signal tansig, posneg: std_logic;
     signal tansig_v, posneg_v: std_logic_vector (7 downto 0);
-    
+   
     signal act_cn, act_reg: dataflow;
 
     type state_type is (RESET, IDLE, PIPELINE);
@@ -157,7 +159,6 @@ begin
                     read_df.flag <= reading.flag;
                     --read_reg (2**n-1 downto 0) <= reading.data;
                 else
-                    
                     read_df.flag <= '0';
                 end if;
 
@@ -181,7 +182,7 @@ begin
             rd_en <= '0';
             address <= (others => '0');
         elsif rising_edge(clk) then
-
+        
             if act_cn.flag = '1' then
                 address <= act_cn.data (p+1 downto p-6);
                 rd_en <= '1';
@@ -190,12 +191,6 @@ begin
                 rd_en <= '0';
             end if;
 
-            
-            if reading.flag = '1' then
-                flag <= '1';
-            else
-                flag <= '0';
-            end if;
         end if;
     end process;
         
@@ -217,7 +212,7 @@ begin
     --read_df.gate <= read_reg (2**n+3 downto 2**n+1);
     
     tansig <= '1' when act_reg.gate = "100" or act_reg.gate = "101" or act_reg.gate = "111" else '0';
-    posneg <= '1' when act_reg.data(31) = '1' else '0';
+    posneg <= '1' when act_reg.data(2**n-1) = '1' else '0';
     
     f0: dff_chain 
         generic map (n => 8)
@@ -304,6 +299,8 @@ begin
 	       end if;
 	    end if;
 	end process;
+	
+	point5 <= x"00800000";
     
     -- attendo se tanh
     -- aggiungo 1/2 se sigm
@@ -314,7 +311,7 @@ begin
             clock   =>  clk,
             clken   =>  clken,
             data1   =>  stage2,
-            data2.data   =>  x"00800000",
+            data2.data   =>  point5 (31 downto 31 - (2**n) + 1),
             data2.flag   =>  '1',
             data2.gate   =>  "000",
             d_out   =>  minus1

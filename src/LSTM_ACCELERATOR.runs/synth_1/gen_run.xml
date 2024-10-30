@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7k70tfbv676-1" LaunchTime="1730114997" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/LSTM_ACCELERATOR.dcp">
-  <File Type="VDS-TIMINGSUMMARY" Name="LSTM_ACCELERATOR_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="LSTM_ACCELERATOR.dcp"/>
   <File Type="RDS-UTIL-PB" Name="LSTM_ACCELERATOR_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="LSTM_ACCELERATOR_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="LSTM_ACCELERATOR_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="LSTM_ACCELERATOR.vds"/>
-  <File Type="REPORTS-TCL" Name="LSTM_ACCELERATOR_reports.tcl"/>
-  <File Type="VDS-TIMING-PB" Name="LSTM_ACCELERATOR_timing_summary_synth.pb"/>
   <File Type="PA-TCL" Name="LSTM_ACCELERATOR.tcl"/>
+  <File Type="RDS-UTIL" Name="LSTM_ACCELERATOR_utilization_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="LSTM_ACCELERATOR_reports.tcl"/>
+  <File Type="RDS-RDS" Name="LSTM_ACCELERATOR.vds"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/custom_types.vhd">

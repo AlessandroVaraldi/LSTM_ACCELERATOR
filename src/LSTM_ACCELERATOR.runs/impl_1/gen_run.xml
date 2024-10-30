@@ -3,11 +3,6 @@
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="LSTM_ACCELERATOR_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS" Name="LSTM_ACCELERATOR_routed.rqs"/>
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="BG-BGN" Name="LSTM_ACCELERATOR.bgn"/>
-  <File Type="BITSTR-SYSDEF" Name="LSTM_ACCELERATOR.sysdef"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="LSTM_ACCELERATOR.ltx"/>
   <File Type="RBD_FILE" Name="LSTM_ACCELERATOR.rbd"/>
   <File Type="NPI_FILE" Name="LSTM_ACCELERATOR.npi"/>
   <File Type="RNPI_FILE" Name="LSTM_ACCELERATOR.rnpi"/>
@@ -15,16 +10,10 @@
   <File Type="RCFI_FILE" Name="LSTM_ACCELERATOR.rcfi"/>
   <File Type="PL-PDI-FILE" Name="LSTM_ACCELERATOR_pld.pdi"/>
   <File Type="BOOT-PDI-FILE" Name="LSTM_ACCELERATOR_boot.pdi"/>
-  <File Type="RDI-RDI" Name="LSTM_ACCELERATOR.vdi"/>
-  <File Type="PDI-FILE" Name="LSTM_ACCELERATOR.pdi"/>
-  <File Type="BITSTR-MMI" Name="LSTM_ACCELERATOR.mmi"/>
-  <File Type="BITSTR-BMM" Name="LSTM_ACCELERATOR_bd.bmm"/>
-  <File Type="BITSTR-NKY" Name="LSTM_ACCELERATOR.nky"/>
-  <File Type="BITSTR-RBT" Name="LSTM_ACCELERATOR.rbt"/>
-  <File Type="BITSTR-MSK" Name="LSTM_ACCELERATOR.msk"/>
-  <File Type="BG-BIN" Name="LSTM_ACCELERATOR.bin"/>
-  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
-  <File Type="BG-BIT" Name="LSTM_ACCELERATOR.bit"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="LSTM_ACCELERATOR_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-RPX" Name="LSTM_ACCELERATOR_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="LSTM_ACCELERATOR_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="LSTM_ACCELERATOR_methodology_drc_routed.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="LSTM_ACCELERATOR_bus_skew_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="LSTM_ACCELERATOR_bus_skew_postroute_physopted.pb"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="LSTM_ACCELERATOR_bus_skew_postroute_physopted.rpt"/>
@@ -32,58 +21,55 @@
   <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="LSTM_ACCELERATOR_timing_summary_postroute_physopted.pb"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING" Name="LSTM_ACCELERATOR_timing_summary_postroute_physopted.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="LSTM_ACCELERATOR_postroute_physopt_bb.dcp"/>
+  <File Type="PLACE-IO" Name="LSTM_ACCELERATOR_io_placed.rpt"/>
+  <File Type="OPT-DRC" Name="LSTM_ACCELERATOR_drc_opted.rpt"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="LSTM_ACCELERATOR.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="LSTM_ACCELERATOR.sysdef"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="LSTM_ACCELERATOR_postroute_physopt.dcp"/>
-  <File Type="BG-DRC" Name="LSTM_ACCELERATOR.drc"/>
-  <File Type="ROUTE-RQS-PB" Name="LSTM_ACCELERATOR_rqs_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="LSTM_ACCELERATOR_bus_skew_routed.rpx"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="LSTM_ACCELERATOR_bus_skew_routed.pb"/>
+  <File Type="BITSTR-MMI" Name="LSTM_ACCELERATOR.mmi"/>
+  <File Type="BITSTR-BMM" Name="LSTM_ACCELERATOR_bd.bmm"/>
+  <File Type="PHYSOPT-DCP" Name="LSTM_ACCELERATOR_physopt.dcp"/>
+  <File Type="PLACE-UTIL-PB" Name="LSTM_ACCELERATOR_utilization_placed.pb"/>
+  <File Type="BG-BGN" Name="LSTM_ACCELERATOR.bgn"/>
+  <File Type="OPT-DCP" Name="LSTM_ACCELERATOR_opt.dcp"/>
+  <File Type="OPT-HWDEF" Name="LSTM_ACCELERATOR.hwdef"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
+  <File Type="BG-BIT" Name="LSTM_ACCELERATOR.bit"/>
   <File Type="ROUTE-BUS-SKEW" Name="LSTM_ACCELERATOR_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="LSTM_ACCELERATOR_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-SIMILARITY" Name="LSTM_ACCELERATOR_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-TIMING-RPX" Name="LSTM_ACCELERATOR_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-TIMING-PB" Name="LSTM_ACCELERATOR_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="LSTM_ACCELERATOR_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="LSTM_ACCELERATOR_route_status.pb"/>
-  <File Type="ROUTE-STATUS" Name="LSTM_ACCELERATOR_route_status.rpt"/>
-  <File Type="ROUTE-PWR-RPX" Name="LSTM_ACCELERATOR_power_routed.rpx"/>
-  <File Type="ROUTE-PWR-SUM" Name="LSTM_ACCELERATOR_power_summary_routed.pb"/>
-  <File Type="ROUTE-PWR" Name="LSTM_ACCELERATOR_power_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="LSTM_ACCELERATOR_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="LSTM_ACCELERATOR_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="LSTM_ACCELERATOR_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-RPX" Name="LSTM_ACCELERATOR_drc_routed.rpx"/>
-  <File Type="ROUTE-DRC-PB" Name="LSTM_ACCELERATOR_drc_routed.pb"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="PA-TCL" Name="LSTM_ACCELERATOR.tcl"/>
+  <File Type="REPORTS-TCL" Name="LSTM_ACCELERATOR_reports.tcl"/>
+  <File Type="PLACE-UTIL" Name="LSTM_ACCELERATOR_utilization_placed.rpt"/>
+  <File Type="BG-DRC" Name="LSTM_ACCELERATOR.drc"/>
+  <File Type="PLACE-CTRL" Name="LSTM_ACCELERATOR_control_sets_placed.rpt"/>
+  <File Type="PDI-FILE" Name="LSTM_ACCELERATOR.pdi"/>
+  <File Type="RDI-RDI" Name="LSTM_ACCELERATOR.vdi"/>
+  <File Type="BG-BIN" Name="LSTM_ACCELERATOR.bin"/>
+  <File Type="PLACE-DCP" Name="LSTM_ACCELERATOR_placed.dcp"/>
+  <File Type="BITSTR-MSK" Name="LSTM_ACCELERATOR.msk"/>
+  <File Type="PWROPT-DCP" Name="LSTM_ACCELERATOR_pwropt.dcp"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="LSTM_ACCELERATOR_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BITSTR-RBT" Name="LSTM_ACCELERATOR.rbt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="LSTM_ACCELERATOR_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-NKY" Name="LSTM_ACCELERATOR.nky"/>
   <File Type="ROUTE-DRC" Name="LSTM_ACCELERATOR_drc_routed.rpt"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="LSTM_ACCELERATOR_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC-PB" Name="LSTM_ACCELERATOR_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="LSTM_ACCELERATOR_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="LSTM_ACCELERATOR_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="LSTM_ACCELERATOR_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="LSTM_ACCELERATOR_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="LSTM_ACCELERATOR_route_status.pb"/>
   <File Type="ROUTE-DCP" Name="LSTM_ACCELERATOR_routed.dcp"/>
   <File Type="ROUTE-ERROR-DCP" Name="LSTM_ACCELERATOR_routed_error.dcp"/>
-  <File Type="PHYSOPT-TIMING" Name="LSTM_ACCELERATOR_timing_summary_physopted.rpt"/>
-  <File Type="PHYSOPT-DRC" Name="LSTM_ACCELERATOR_drc_physopted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="LSTM_ACCELERATOR_physopt.dcp"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="LSTM_ACCELERATOR_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="LSTM_ACCELERATOR_postplace_pwropt.dcp"/>
-  <File Type="PLACE-RQA-PB" Name="LSTM_ACCELERATOR_rqa_placed.pb"/>
-  <File Type="PLACE-TIMING" Name="LSTM_ACCELERATOR_timing_summary_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="LSTM_ACCELERATOR_incremental_reuse_pre_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="LSTM_ACCELERATOR_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-CTRL" Name="LSTM_ACCELERATOR_control_sets_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="LSTM_ACCELERATOR_utilization_placed.pb"/>
-  <File Type="PLACE-UTIL" Name="LSTM_ACCELERATOR_utilization_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="LSTM_ACCELERATOR_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-IO" Name="LSTM_ACCELERATOR_io_placed.rpt"/>
-  <File Type="PLACE-DCP" Name="LSTM_ACCELERATOR_placed.dcp"/>
-  <File Type="PWROPT-TIMING" Name="LSTM_ACCELERATOR_timing_summary_pwropted.rpt"/>
-  <File Type="PWROPT-DRC" Name="LSTM_ACCELERATOR_drc_pwropted.rpt"/>
-  <File Type="PWROPT-DCP" Name="LSTM_ACCELERATOR_pwropt.dcp"/>
-  <File Type="OPT-RQA-PB" Name="LSTM_ACCELERATOR_rqa_opted.pb"/>
-  <File Type="OPT-HWDEF" Name="LSTM_ACCELERATOR.hwdef"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="LSTM_ACCELERATOR_methodology_drc_opted.rpt"/>
-  <File Type="OPT-DRC" Name="LSTM_ACCELERATOR_drc_opted.rpt"/>
-  <File Type="OPT-DCP" Name="LSTM_ACCELERATOR_opt.dcp"/>
-  <File Type="OPT-TIMING" Name="LSTM_ACCELERATOR_timing_summary_opted.rpt"/>
-  <File Type="REPORTS-TCL" Name="LSTM_ACCELERATOR_reports.tcl"/>
-  <File Type="INIT-TIMING" Name="LSTM_ACCELERATOR_timing_summary_init.rpt"/>
-  <File Type="PA-TCL" Name="LSTM_ACCELERATOR.tcl"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="LSTM_ACCELERATOR_routed_bb.dcp"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="LSTM_ACCELERATOR_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="LSTM_ACCELERATOR_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="LSTM_ACCELERATOR_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="LSTM_ACCELERATOR_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="LSTM_ACCELERATOR_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="LSTM_ACCELERATOR_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="LSTM_ACCELERATOR_bus_skew_routed.rpx"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/custom_types.vhd">
@@ -254,5 +240,6 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
+    <Step Id="write_device_image"/>
   </Strategy>
 </GenRun>

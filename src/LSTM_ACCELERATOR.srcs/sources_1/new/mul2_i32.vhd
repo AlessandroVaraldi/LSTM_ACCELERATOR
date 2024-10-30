@@ -49,7 +49,7 @@ begin
             d_out.flag <= '0';
         elsif rising_edge (clock) and clken = '1' then
             if data1.flag = '1' then
-                d_out.data <= data1.data(31) & data1.data(31 downto 1);
+                d_out.data <= data1.data(2**n-1) & data1.data(2**n-1 downto 1);
                 d_out.flag <= '1';    
                 d_out.gate <= data1.gate;
             else

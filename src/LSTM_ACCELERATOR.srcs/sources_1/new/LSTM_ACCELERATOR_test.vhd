@@ -31,6 +31,16 @@ end LSTM_ACCELERATOR_test;
 
 architecture Behavioral of LSTM_ACCELERATOR_test is
 
+    function mul_by_075(input : integer) return integer is
+        variable temp : integer;
+    begin
+        -- Calcola input * 0.75 usando lo shift
+        temp := input - (input / 4);  -- Equivalente a input * 0.75 approssimato per difetto
+        return temp;
+    end function;
+    
+    constant point: integer := mul_by_075(2**precision);
+
     -- Clock period definition
     constant clk_period : time := 10 ns;
 
@@ -38,7 +48,12 @@ architecture Behavioral of LSTM_ACCELERATOR_test is
     signal data_x: input_array;
 
     component LSTM_ACCELERATOR is
-        generic(inputs: positive; cells: positive);
+        generic(
+            inputs: positive := 5; 
+            cells: positive := 3;
+            n: positive := 5;
+            p: positive := 24
+        );
         port 
         (
             clk         : in  std_logic;
@@ -62,11 +77,11 @@ architecture Behavioral of LSTM_ACCELERATOR_test is
 
 begin
 
-    data_x(0) <= data(159 downto 128);
-    data_x(1) <= data(127 downto 96);
-    data_x(2) <= data(95 downto 64);
-    data_x(3) <= data(63 downto 32);
-    data_x(4) <= data(31 downto 0);
+    data_x(0) <= data(159 downto 159 - (2**precision) + 1);
+    data_x(1) <= data(127 downto 127 - (2**precision) + 1);
+    data_x(2) <= data(95 downto 95 - (2**precision) + 1);
+    data_x(3) <= data(63 downto 63 - (2**precision) + 1);
+    data_x(4) <= data(31 downto 31 - (2**precision) + 1);
     
     m0: xrom
         port map (
@@ -78,7 +93,9 @@ begin
     u0: LSTM_ACCELERATOR
         generic map (
             inputs  => 5,
-            cells   => 3
+            cells   => 1,
+            n       => precision,
+            p       => point
         )
         port map (
             clk     => clk,
