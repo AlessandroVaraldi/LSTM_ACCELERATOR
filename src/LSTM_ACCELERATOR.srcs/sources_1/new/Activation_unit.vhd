@@ -110,7 +110,7 @@ architecture Behavioral of Activation_unit is
     signal invert, stage1, divid2, stage2, minus1, stage3: dataflow;
     
     signal tansig, posneg: std_logic;
-    signal tansig_v, posneg_v: std_logic_vector (7 downto 0);
+    signal tansig_v, posneg_v: std_logic_vector (8 downto 0);
    
     signal act_cn, act_reg: dataflow;
 
@@ -211,11 +211,11 @@ begin
     --read_df.flag <= read_reg (2**n);
     --read_df.gate <= read_reg (2**n+3 downto 2**n+1);
     
-    tansig <= '1' when act_reg.gate = "100" or act_reg.gate = "101" or act_reg.gate = "111" else '0';
-    posneg <= '1' when act_reg.data(2**n-1) = '1' else '0';
+    tansig <= '1' when act_in.gate = "100" or act_in.gate = "101" or act_in.gate = "111" else '0';
+    posneg <= '1' when act_in.data(2**n-1) = '1' else '0';
     
     f0: dff_chain 
-        generic map (n => 8)
+        generic map (n => 9)
         port map (
             clock   => clk,
             reset   => rst,
@@ -224,7 +224,7 @@ begin
         );
         
     f1: dff_chain 
-        generic map (n => 8)
+        generic map (n => 9)
         port map (
             clock   => clk,
             reset   => rst,
@@ -250,7 +250,7 @@ begin
 	        stage1.flag <= '0';
 	    elsif rising_edge(clk) and clken = '1' then
 	       if invert.flag = '1' then
-	           if posneg_v(0) = '1' then
+	           if posneg_v(4) = '1' then
 	               stage1.data <= invert.data;
 	               stage1.gate <= read_df.gate;
 	               stage1.flag <= invert.flag;
@@ -285,7 +285,7 @@ begin
 	        stage2.flag <= '0';
 	    elsif rising_edge(clk) and clken = '1' then
 	       if divid2.flag = '1' then
-	           if tansig_v(2) = '1' then
+	           if tansig_v(6) = '1' then
 	               stage2.data <= divid2.data;
 	               stage2.gate <= stage1.gate;
 	               stage2.flag <= divid2.flag;
@@ -311,7 +311,7 @@ begin
             clock   =>  clk,
             clken   =>  clken,
             data1   =>  stage2,
-            data2.data   =>  point5 (31 downto 31 - (2**n) + 1),
+            data2.data   =>  point5 (2**n - 1 + 24 - p downto 24 - p),
             data2.flag   =>  '1',
             data2.gate   =>  "000",
             d_out   =>  minus1
@@ -324,7 +324,7 @@ begin
 	        stage3.flag <= '0';
 	    elsif rising_edge(clk) and clken = '1' then
 	       if minus1.flag = '1' then
-	           if tansig_v(4) = '1' then
+	           if tansig_v(8) = '1' then
 	               stage3.data <= minus1.data;
 	               stage3.gate <= stage2.gate;
 	               stage3.flag <= minus1.flag;

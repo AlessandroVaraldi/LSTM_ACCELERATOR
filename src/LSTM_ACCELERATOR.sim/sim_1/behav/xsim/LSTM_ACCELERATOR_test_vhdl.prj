@@ -23,19 +23,6 @@ vhdl xil_defaultlib  \
 "../../../../LSTM_ACCELERATOR.srcs/sources_1/new/mul_i32.vhd" \
 "../../../../LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit.vhd" \
 "../../../../LSTM_ACCELERATOR.srcs/sources_1/new/address_cnv.vhd" \
-
-vhdl work  \
-"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_wire.vhd" \
-
-vhdl xil_defaultlib  \
-"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_lib.vhd" \
-"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_lib.vhd" \
-
-vhdl work  \
-"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_wire.vhd" \
-"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_func.vhd" \
-
-vhdl xil_defaultlib  \
 "../../../../LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_test.vhd" \
 
 # Do not sort compile order

@@ -261,7 +261,7 @@ architecture Behavioral of LSTM_ACCELERATOR is
     
     signal luta, lutb: std_logic_vector (31 downto 0);
 
-    signal step: std_logic;
+    signal step0, step1: std_logic;
     
     type state_type is (RESET, IDLE, LOAD, POSTLOAD, PIPELINE);
     signal state, next_state: state_type;
@@ -391,15 +391,31 @@ begin
     process(clk)
     begin
         if rising_edge(clk) then
-            if step = '1' then
-                step <= '0';
+            if step0 = '1' then
+                step0 <= '0';
                 act_reading.flag <= '1';
             elsif act_rd = '1' then
-                step <= '1';
+                step0 <= '1';
                 act_reading.flag <= '0';
             else
-                step <= '0';
+                step0 <= '0';
                 act_reading.flag <= '0';
+            end if;
+        end if;
+    end process;
+    
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if step1 = '1' then
+                step1 <= '0';
+                lu_reading.flag <= '1';
+            elsif act_rd = '1' then
+                step1 <= '1';
+                lu_reading.flag <= '0';
+            else
+                step1 <= '0';
+                lu_reading.flag <= '0';
             end if;
         end if;
     end process;
