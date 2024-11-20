@@ -164,8 +164,6 @@ def main():
     X_train, y_train = X[:47616], y[:47616]
     X_val, y_val = X[47616:53568], y[47616:53568]
     X_test, y_test = X[53568:59510], y[53568:59510]
-    
-    print(y_test)
 
     X_train, y_train, mean_X_train, std_X_train, mean_y_train, std_y_train = normalize_data(X_train, y_train)
     X_val, y_val, mean_X_val, std_X_val, mean_y_val, std_y_val = normalize_data(X_val, y_val)

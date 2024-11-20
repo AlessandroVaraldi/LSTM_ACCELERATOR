@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/alessandro/OneDrive/Documenti/Politecnico/Dottorato/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/Activation_unit.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'Activation_unit'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/Vivado/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_i32.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'pwl_i32'

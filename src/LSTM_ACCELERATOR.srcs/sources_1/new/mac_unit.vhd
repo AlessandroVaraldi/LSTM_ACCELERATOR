@@ -3,6 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 use work.custom_types.all;
+use work.components_i32.all;
 
 entity mac_unit is
     generic (n: integer; p: integer);
@@ -24,26 +25,9 @@ entity mac_unit is
 end mac_unit;
 
 architecture Behavioral of mac_unit is
-
-    component mac_i32 is
-        generic (n: integer; p: integer);
-        port
-        (
-            reset   : in  std_logic;
-            clear   : in  std_logic;
-            clock   : in  std_logic;
-            clken	: in  std_logic;
-            start   : in  std_logic;
-            data1	: in  dataflow;				
-            data2	: in  dataflow;		
-            data3	: in  dataflow;		
-            d_out	: out dataflow;	
-            flags  	: out std_logic_vector(4 downto 0)
-        );
-    end component;
     
-    signal bias, mac, reg: dataflow;
-    signal mac_rs, mac_st: std_logic;
+    signal bias, mac_out, reg: dataflow;
+    signal mac_st: std_logic;
     
     signal reg_en, reg_rs: std_logic;
     
@@ -64,11 +48,9 @@ begin
     process (state, start, stop, newline, endline)
     begin
         reg_rs <= '0';
-        mac_rs <= '0';
         case state is
             when RESET =>
             
-                mac_rs <= '1';
                 reg_rs <= '1';
                 next_state <= IDLE;
                 
@@ -110,7 +92,7 @@ begin
                 reg.data <= (others => '0');
                 reg.gate <= (others => '0');
             elsif reg_en = '1' then
-                reg <= mac;
+                reg <= mac_out;
             end if;
         end if;
     end process;
@@ -118,7 +100,7 @@ begin
     process (clk)
     begin
         if rising_edge(clk) then
-            if start = '1' or mac.flag = '1' then
+            if start = '1' or mac_out.flag = '1' then
                 mac_st <= '1';
             else 
                 mac_st <= '0';
@@ -128,23 +110,22 @@ begin
 
     bias <= data_b when newline = '1' else reg;
     
-    u0: mac_i32
+    u0: mac
         generic map (n => n, p => p)
         port map (
             clock   => clk,
             reset   => rst,
-            clear   => mac_rs,
             start   => mac_st,
             clken   => clken,
             data1   => data_x,
             data2   => data_w,
             data3   => bias,
-            d_out   => mac
+            d_out   => mac_out
         );
         
-    reg_en <= mac.flag;
+    reg_en <= mac_out.flag;
         
     data_o <= reg;
-    ready <= mac.flag;
+    ready <= mac_out.flag;
     
 end Behavioral;

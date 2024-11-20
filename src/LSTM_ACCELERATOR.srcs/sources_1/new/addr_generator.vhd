@@ -38,12 +38,14 @@ entity addr_generator is
         clk         : in  std_logic;
         rst         : in  std_logic;
         en          : in  std_logic;
+        o_en        : in  std_logic;
         h_ad        : out std_logic_vector (h_ad_dim-1 downto 0);
         x_ad        : out std_logic_vector (x_ad_dim-1 downto 0);
         x_se        : out integer;
         sel         : out std_logic;
         w_ad        : out std_logic_vector ((w_ad_dim+b_ad_dim)-1 downto 0);
         b_ad        : out std_logic_vector (b_ad_dim-1 downto 0);
+        hw_ad       : out std_logic_vector (h_ad_dim-1 downto 0);
         newline     : out std_logic;
         endline     : out std_logic;
         ready       : out std_logic
@@ -55,7 +57,7 @@ architecture Behavioral of addr_generator is
     constant xdim: integer := cells + inputs;
     constant ydim: integer := 4 * cells;
 
-    signal wi, wj, xj, hi, xi: integer;
+    signal wi, wj, xj, hi, hwi, xi: integer;
     signal x_rs: std_logic;
     
     signal nl, el: std_logic;
@@ -72,6 +74,7 @@ begin
             xj <= 0;
             wi <= 0;
             wj <= 0;
+            hwi <= 0;
             el <= '0';
         else
             if rising_edge(clk) then
@@ -107,6 +110,14 @@ begin
                 else 
                     el <= '0';
                 end if;
+                
+                if o_en = '1' then
+                    if hwi = 3 then
+                        hwi <= 0;
+                    else
+                        hwi <= hwi + 1;
+                    end if;
+                end if;
             end if;
         end if;
     end process;
@@ -120,6 +131,8 @@ begin
     hi <= wi - 5;
     h_ad <= std_logic_vector(to_unsigned(hi, h_ad_dim)) when hi > 0 else (others => '0');
     sel <= '0' when xi > -1 and xi < inputs else '1';
+    
+    hw_ad <= std_logic_vector(to_unsigned(hwi, h_ad_dim));
     
     newline <= '1' when xi = 0 and el = '1' else '0';
     endline <= '1' when xi = -1 and el = '1'  else '0';

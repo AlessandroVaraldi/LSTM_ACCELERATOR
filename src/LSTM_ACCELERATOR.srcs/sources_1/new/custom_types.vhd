@@ -22,10 +22,13 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-
 package custom_types is
     
+    constant mac_comps: integer := 2;
+    constant inputs: integer := 5;
+    constant cells: integer := 3;
     constant precision: integer := 5;
+    constant point: integer := 24;
 
     type weight_array is record
         w_x: std_logic_vector (2**precision-1 downto 0);
@@ -46,8 +49,9 @@ package custom_types is
         -- i gate   : 101
         -- z gate   : 110
         -- o gate   : 111
+        
     end record;
     
-    type input_array is array (0 to 4) of std_logic_vector (2**precision-1 downto 0);
+    type input_array is array (0 to inputs-1) of std_logic_vector (2**precision-1 downto 0);
     
- end custom_types;
+end custom_types;

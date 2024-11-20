@@ -27,6 +27,11 @@ use STD.TEXTIO.ALL;             -- Pacchetto generale per l'input/output di test
 
 use work.custom_types.all;
 
+use work.lzc_wire.all;
+use work.lzc_lib.all;
+use work.fp_wire.all;
+use work.fp_lib.all;
+
 entity LSTM_ACCELERATOR_test is
 --  Port ( );
 end LSTM_ACCELERATOR_test;
@@ -53,10 +58,10 @@ architecture Behavioral of LSTM_ACCELERATOR_test is
 
     component LSTM_ACCELERATOR is
         generic(
-            inputs: positive := 5; 
-            cells: positive := 3;
-            n: positive := 5;
-            p: positive := 24
+            inputs: positive := inputs; 
+            cells: positive := cells;
+            n: positive := precision;
+            p: positive := point
         );
         port 
         (
@@ -64,12 +69,14 @@ architecture Behavioral of LSTM_ACCELERATOR_test is
             rst         : in  std_logic;
             start       : in  std_logic;
             data_x      : in  input_array;
-            ready       : out std_logic
+            ready       : out std_logic;
+            output      : out std_logic_vector (2**n-1 downto 0)
         );
     end component;
     
     signal x_ad: unsigned(7 downto 0) := (others => '0');
     signal data: std_logic_vector(159 downto 0);
+    signal output: std_logic_vector (2**precision-1 downto 0);
     
     component xrom is
         port (
@@ -78,19 +85,44 @@ architecture Behavioral of LSTM_ACCELERATOR_test is
             data : out STD_LOGIC_VECTOR(159 downto 0)
         );
     end component;
+    
+    component mac_f32 is
+        port
+        (
+            reset   : in  std_logic;
+            clock   : in  std_logic;
+            clken	: in  std_logic;
+            start   : in  std_logic;
+            data1	: in  dataflow;		
+            data2	: in  dataflow;	
+            data3	: in  dataflow;	
+            d_out	: out dataflow;	
+            flags  	: out std_logic_vector(4 downto 0)
+        );
+    end component;
 
 begin
 
+--    u1: mac_f32
+--        port map (
+--            reset       => rst,
+--            clock       => clk,
+--            clken       => '1',
+--            start       => start,
+--            data1       => x,
+--            data2       => y,
+--            data3       => z
+--        );
+        
     -- ## DEBUG ##
-    process
-        variable line_out : line;
-    begin
-        debug_signal <= 2**precision - 1 + 24 - point;  -- Assegnazione di un valore di esempio
-        write(line_out, string'("Debug: debug_signal = "));
-        write(line_out, debug_signal);  -- Stampa il valore di debug_signal
-        writeline(output, line_out);    -- Stampa la linea nella console
-        wait;  -- Per bloccare la simulazione
-    end process;
+--    process(output)
+--        variable line_out : line;
+--    begin
+--        write(line_out, string'("Debug: debug_signal = "));
+--        write(line_out, debug_signal);  -- Stampa il valore di debug_signal
+--        writeline(output, line_out);    -- Stampa la linea nella console
+--        wait;  -- Per bloccare la simulazione
+--    end process;
 
     data_x(0) <= data (2**precision - 1 + 24 - point + 128 downto 24 - point + 128);
     data_x(1) <= data (2**precision - 1 + 24 - point + 96 downto 24 - point + 96);
@@ -107,8 +139,8 @@ begin
         
     u0: LSTM_ACCELERATOR
         generic map (
-            inputs  => 5,
-            cells   => 3,
+            inputs  => inputs,
+            cells   => cells,
             n       => precision,
             p       => point
         )
@@ -131,6 +163,7 @@ begin
     -- Stimulus process
     stimulus: process
     begin
+        start <= '0';
         rst <= '1';
         wait for clk_period * 2;
         rst <= '0';
@@ -139,7 +172,7 @@ begin
         start <= '1';
         wait for clk_period;
         start <= '0';
-        
+     
         wait;
     end process;
     

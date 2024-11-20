@@ -25,13 +25,14 @@ use IEEE.STD_LOGIC_TEXTIO.ALL;  -- Pacchetto per scrivere STD_LOGIC
 use STD.TEXTIO.ALL;             -- Pacchetto generale per l'input/output di testo
 
 use work.custom_types.all;
+use work.components_i32.all;
 
 entity LSTM_ACCELERATOR is
     generic(
-        inputs: positive := 5; 
-        cells: positive := 3;
-        n: positive := 5;
-        p: positive := 24
+        inputs: positive := inputs; 
+        cells: positive := cells;
+        n: positive := precision;
+        p: positive := point
     );
     port 
     (
@@ -39,7 +40,8 @@ entity LSTM_ACCELERATOR is
         rst         : in  std_logic;
         start       : in  std_logic;
         data_x      : in  input_array;
-        ready       : out std_logic
+        ready       : out std_logic;
+        output      : out std_logic_vector (2**n-1 downto 0)
     );
 end LSTM_ACCELERATOR;
 
@@ -96,7 +98,7 @@ architecture Behavioral of LSTM_ACCELERATOR is
             data_x      : in  dataflow;
             data_w      : in  dataflow;
             data_b      : in  dataflow;
-            newline     : in std_logic;
+            newline     : in  std_logic;
             endline     : in  std_logic; 
             data_o      : out dataflow;
             ready       : out std_logic
@@ -121,12 +123,14 @@ architecture Behavioral of LSTM_ACCELERATOR is
             clk         : in  std_logic;
             rst         : in  std_logic;
             en          : in  std_logic;
+            o_en        : in  std_logic;
             h_ad        : out std_logic_vector (h_ad_dim-1 downto 0);
             x_ad        : out std_logic_vector (x_ad_dim-1 downto 0);
             x_se        : out integer;
             sel         : out std_logic;
             w_ad        : out std_logic_vector ((w_ad_dim+b_ad_dim)-1 downto 0);
             b_ad        : out std_logic_vector (b_ad_dim-1 downto 0);
+            hw_ad       : out std_logic_vector (h_ad_dim-1 downto 0); 
             newline     : out std_logic;
             endline     : out std_logic;
             ready       : out std_logic
@@ -167,8 +171,8 @@ architecture Behavioral of LSTM_ACCELERATOR is
         port (
             clk         : in  std_logic;
             we          : in  std_logic;
-            wr_addr     : in  std_logic_vector(len-1 downto 0);
-            rd_addr     : in  std_logic_vector(len-1 downto 0);
+            wr_addr     : in  std_logic_vector (len-1 downto 0);
+            rd_addr     : in  std_logic_vector (len-1 downto 0);
             din         : in  std_logic_vector (2**n-1 downto 0);
             dout        : out std_logic_vector (2**n-1 downto 0)
         );
@@ -202,25 +206,18 @@ architecture Behavioral of LSTM_ACCELERATOR is
     
     signal act_in: dataflow;
     
-    component Activation_unit is
+    component  pwl_lut is
         generic (n: integer; p: integer);
-        port 
+        port
         (
-            clk         : in  std_logic;
-            rst         : in  std_logic;
-            clken       : in  std_logic;
-            start       : in  std_logic;
-            act_in      : in  dataflow;
-            rd_en       : out std_logic;
-            address     : out std_logic_vector (7 downto 0);
-            reading     : in  dataflow;
-            act_out     : out dataflow
-        );  
+            clk:        in  std_logic;
+            rst:        in  std_logic;
+            input:      in  dataflow;
+            output:     out dataflow
+        );
     end component;
     
-    signal act_start, act_rd: std_logic;
-    signal act_ad: std_logic_vector (7 downto 0);
-    signal act_reading, act_out: dataflow;
+    signal act_out: dataflow;
     
     component LSTM_unit is
         generic (n: integer; p: integer);
@@ -233,18 +230,17 @@ architecture Behavioral of LSTM_ACCELERATOR is
             stop        : in  std_logic;
             data        : in  dataflow;
             c_new       : out dataflow;
-            c_add       : out dataflow;
-            rd_en       : out std_logic;
-            tanh_c      : in  dataflow;
             h_new       : out dataflow
         );
     end component;
     
     signal LU_start: std_logic;
-    signal LU_in, c_new, h_new, tanh_c: dataflow;
-    signal LU_rd: std_logic;
-    signal LU_ad: std_logic_vector (7 downto 0);
-    signal c_add, LU_reading: dataflow;
+    signal LU_in, c_new, h_new: dataflow;
+    --signal LU_rd: std_logic;
+    --signal LU_ad: std_logic_vector (7 downto 0);
+    --signal c_add, LU_reading: dataflow;
+    signal c_reg: dataflow;
+    signal en_c_reg: std_logic;
     
     component lut is
         port (
@@ -272,12 +268,18 @@ begin
     begin
         if rst = '1' then
             state <= RESET;
+            c_reg.data <= (others => '0');
+            c_reg.gate <= (others => '0');
+            c_reg.flag <= '0';
         elsif rising_edge(clk) then
             state <= next_state;
+            if en_c_reg = '1' then 
+                c_reg <= c_new;
+            end if; 
         end if;
     end process;
     
-    process (state, start, cnt, sel, x_se, h_rad, endline)
+    process (state, start, cnt, sel, x_se, h_rad, endline, h_new.flag)
     begin
     
         load_init <= '0';
@@ -303,7 +305,11 @@ begin
         act_in.flag <= '0';
         act_in.gate <= (others => '0');
         
-        act_start <= '0';
+        en_c_reg <= '0';
+        
+        output <= (others => '0');
+        
+--        act_start <= '0';
         
         case state is
             when RESET =>
@@ -351,8 +357,19 @@ begin
                 
                 if endline = '1' then
                     gi_en <= '1';
-                    act_in <= mac_o;
-                    act_start <= '1';
+                    --act_in.data <= mac_o.data (31) & mac_o.data (31 downto 1);
+                    act_in.data <= mac_o.data;
+                    act_in.gate <= mac_o.gate;
+                    act_in.flag <= mac_o.flag;
+--                    act_start <= '1';
+                end if;
+                
+                if c_new.flag = '1' then
+                    en_c_reg <= '1';
+                end if;
+                
+                if h_new.flag = '1' then
+                    output <= h_new.data;
                 end if;
                 
                 next_state <= PIPELINE;
@@ -388,38 +405,6 @@ begin
         end if;
     end process;
     
-    process(clk)
-    begin
-        if rising_edge(clk) then
-            if step0 = '1' then
-                step0 <= '0';
-                act_reading.flag <= '1';
-            elsif act_rd = '1' then
-                step0 <= '1';
-                act_reading.flag <= '0';
-            else
-                step0 <= '0';
-                act_reading.flag <= '0';
-            end if;
-        end if;
-    end process;
-    
-    process(clk)
-    begin
-        if rising_edge(clk) then
-            if step1 = '1' then
-                step1 <= '0';
-                lu_reading.flag <= '1';
-            elsif act_rd = '1' then
-                step1 <= '1';
-                lu_reading.flag <= '0';
-            else
-                step1 <= '0';
-                lu_reading.flag <= '0';
-            end if;
-        end if;
-    end process;
-    
     x_df.gate <= std_logic_vector('1' & gi);
             
     -- arrivo a ad=cells*4 e cambio input, bias, e do segnale di newline
@@ -442,12 +427,14 @@ begin
             clk         => clk,
             rst         => rst,
             en          => adg_en,
+            o_en        => h_new.flag,
             h_ad        => h_rad,
             x_ad        => x_ad,
             x_se        => x_se,
             sel         => sel,
             w_ad        => w_ad,
             b_ad        => b_ad,
+            hw_ad       => h_wad,
             newline     => newline,
             endline     => endline,
             ready       => adg_rd
@@ -519,19 +506,14 @@ begin
             data_o      => mac_o,
             ready       => mac_ready
         );
-          
-    u2: activation_unit
+        
+    u2: pwl_lut
         generic map (n => n, p => p)
         port map (
             clk     => clk,
             rst     => rst,
-            clken   => '1',
-            start   => act_start,
-            act_in  => act_in,
-            rd_en   => act_rd,
-            address => act_ad,
-            reading => act_reading,
-            act_out => act_out
+            input   => act_in,
+            output  => act_out
         );
         
     LU_in <= act_out;
@@ -547,29 +529,12 @@ begin
             stop    => '0',
             data    => LU_in,
             c_new   => c_new,
-            c_add   => c_add,
-            rd_en   => LU_rd,
-            tanh_c  => lu_reading,
             h_new   => h_new
         );
         
-    LU_ad <= c_add.data (p+1 downto p-6);
-        
-    m2: lut
-        port map (
-            clka        => clk,
-            addra       => act_ad,
-            ena         => act_rd,
-            douta       => luta,
-            clkb        => clk,
-            addrb       => LU_ad,
-            enb         => LU_rd,
-            doutb       => lutb
-        );
-        
-    act_reading.data <= luta (2**n - 1 + 24 - p downto 24 - p);
-    lu_reading.data <= lutb (2**n - 1 + 24 - p downto 24 - p);
-                  
+    h_in <= h_new.data;
+    h_we <= h_new.flag;
+    
     m3: h_ram
         generic map (
             n => n,
