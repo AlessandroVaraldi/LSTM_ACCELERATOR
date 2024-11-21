@@ -21,8 +21,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use IEEE.STD_LOGIC_TEXTIO.ALL;  -- Pacchetto per scrivere STD_LOGIC
-use STD.TEXTIO.ALL;             -- Pacchetto generale per l'input/output di testo
 
 use work.custom_types.all;
 use work.components_i32.all;
@@ -41,7 +39,7 @@ entity LSTM_ACCELERATOR is
         start       : in  std_logic;
         data_x      : in  input_array;
         ready       : out std_logic;
-        output      : out std_logic_vector (2**n-1 downto 0)
+        outp        : out std_logic_vector (2**n-1 downto 0)
     );
 end LSTM_ACCELERATOR;
 
@@ -62,7 +60,7 @@ architecture Behavioral of LSTM_ACCELERATOR is
     constant ydim: integer := cells * 4;
     constant area: integer := (inputs + cells) * cells * 4;
     
-    constant xad_dim: integer := 10;
+    constant xad_dim: integer := 3;
     constant had_dim: integer := log2ceil(cells);
     constant bad_dim: integer := log2ceil(ydim);
     constant wad_dim: integer := log2ceil(xdim);
@@ -137,7 +135,7 @@ architecture Behavioral of LSTM_ACCELERATOR is
         );  
     end component;
     
-    signal adg_en, adg_rd, sel: std_logic := '1';
+    signal adg_en, adg_rd, sel: std_logic;
     
     component wrom is
         generic (n: integer; p: integer; i: integer; c: integer);
@@ -199,7 +197,7 @@ architecture Behavioral of LSTM_ACCELERATOR is
     
     signal load_init: std_logic;
     
-    signal x_se : integer range 0 to inputs-1 := 0;
+    signal x_se : integer;
     
     signal gi: unsigned (1 downto 0);
     signal gi_rs, gi_en: std_logic;
@@ -279,7 +277,7 @@ begin
         end if;
     end process;
     
-    process (state, start, cnt, sel, x_se, h_rad, endline, h_new.flag)
+    process (state, start, cnt, sel, x_se, h_rad, endline, h_new)
     begin
     
         load_init <= '0';
@@ -307,7 +305,7 @@ begin
         
         en_c_reg <= '0';
         
-        output <= (others => '0');
+        --outp <= (others => '0');
         
 --        act_start <= '0';
         
@@ -369,7 +367,7 @@ begin
                 end if;
                 
                 if h_new.flag = '1' then
-                    output <= h_new.data;
+                    --outp <= h_new.data;
                 end if;
                 
                 next_state <= PIPELINE;
@@ -379,6 +377,8 @@ begin
         end case;
       
     end process;
+    
+    outp <= h_new.data;
     
     init_count: process (clk, cnt_en, cnt_rs, gi_rs, gi_en)
     begin

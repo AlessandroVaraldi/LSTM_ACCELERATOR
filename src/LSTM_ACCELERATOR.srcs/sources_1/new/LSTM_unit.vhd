@@ -79,6 +79,17 @@ begin
 
     -- ricevo i dati in questa sequenza: i0, f0, z0, o0, i1, f1, z1, o1
     -- devo calcolare c = z * i + c * f, h = c * o
+
+    rom <= (
+        X"00EC9A9F00000000",
+        X"0099550D0029A2C9",
+        X"00497FEC007977E9",
+        X"001E256E00BA7FA6",
+        X"000B907C00DFA98A",
+        X"0004524F00F1C4FC",
+        X"0001995B00F9EFD7",
+        X"000096EB00FD7861"
+    );
     
     process (clk, rst)
     begin

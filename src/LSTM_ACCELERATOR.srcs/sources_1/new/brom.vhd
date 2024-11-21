@@ -33,6 +33,26 @@ architecture Behavioral of brom is
         X"003F271F"
     );
 begin
+
+    rom <= (
+        X"00A45293",
+        X"007C27C0",
+        X"009BFDB0",
+        X"002218CC",
+        X"FFA886A4",
+        X"FEFBB2E0",
+        X"FFE5C27F",
+        X"FFBD22AD",
+        X"0019F896",
+        X"00FC3886",
+        X"0107A688",
+        X"0196EC7A",
+        X"00E45DA1",
+        X"007A69E4",
+        X"FFF24876",
+        X"003F271F"
+    );
+    
     process(clk)
     begin
         if rising_edge(clk) then

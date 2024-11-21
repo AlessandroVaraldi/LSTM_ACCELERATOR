@@ -1,0 +1,5 @@
+define_design_lib WORK -path ./work
+set search_path [list . /eda/dk/SAED14nm/stdcell_hvt/db_nldm]
+set link_library [list "*" "saed14hvt_ff0p7v125c.db" "dw_foundation.sldb" ]
+set target_library [list "saed14hvt_ff0p7v125c.db" ]
+set synthetic_library [list "dw_foundation.sldb" ]

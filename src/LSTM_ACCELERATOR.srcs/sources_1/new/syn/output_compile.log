@@ -1,0 +1,229 @@
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | U-2022.12-DWBB_202212.0 |     *     |
+| Licensed DW Building Blocks        | U-2022.12-DWBB_202212.0 |     *     |
+============================================================================
+
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler                                                                   |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 3885                                   |
+| Number of User Hierarchies                              | 37                                     |
+| Sequential Cell Count                                   | 2473                                   |
+| Macro Count                                             | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 2                                      |
+| Number of VT Class                                      | 0                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 443                                    |
+| Number of Dont Touch Nets                               | 38                                     |
+| Number of Size Only Cells                               | 0                                      |
+| Design with UPF Data                                    | false                                  |
+====================================================================================================
+
+Information: There are 111 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'h_RAM_n5_len2'
+Loading db file '/eda/dk/SAED14nm/stdcell_hvt/db_nldm/saed14hvt_ff0p7v125c.db'
+Warning: No single bit degenerate for multibit library cell 'SAEDHVT14_FSDN4_V2_4'. (OPT-914)
+Warning: No single bit degenerate for multibit library cell 'SAEDHVT14_FSDN4_V2_2'. (OPT-914)
+Warning: No single bit degenerate for multibit library cell 'SAEDHVT14_FSDN4_V2_1'. (OPT-914)
+Warning: No single bit degenerate for multibit library cell 'SAEDHVT14_FSDN4_V2_0P5'. (OPT-914)
+Warning: No single bit degenerate for multibit library cell 'SAEDHVT14_FSDN2_V2_4'. (OPT-914)
+Warning: No single bit degenerate for multibit library cell 'SAEDHVT14_FSDN2_V2_2'. (OPT-914)
+Warning: No single bit degenerate for multibit library cell 'SAEDHVT14_FSDN2_V2_1'. (OPT-914)
+Warning: No single bit degenerate for multibit library cell 'SAEDHVT14_FSDN2_V2_0P5'. (OPT-914)
+  Processing 'multiplier_n5_p24_0'
+  Processing 'mac_n5_p24_0'
+  Processing 'adder_n5_p24'
+  Processing 'LSTM_unit_n5_p24'
+Information: The register 'next_state_reg' is a constant and will be removed. (OPT-1206)
+  Processing 'q_transformer_n5_p24'
+  Processing 'm_transformer_n5_p24'
+  Processing 'pwl_i32_n5_p24'
+Information: The register 'lut_out_reg[63]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[62]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[61]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[60]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[59]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[58]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[57]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[56]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[31]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[30]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[29]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[28]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[27]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[26]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[25]' is a constant and will be removed. (OPT-1206)
+Information: The register 'lut_out_reg[24]' is a constant and will be removed. (OPT-1206)
+  Processing 'dflipflop_0'
+  Processing 'dff_chain_N3_0'
+  Processing 'pwl_lut_n5_p24'
+  Processing 'mac_unit_n5_p24'
+Information: The register 'next_state_reg[0]' is a constant and will be removed. (OPT-1206)
+  Processing 'brom_n5_p24_len4'
+  Processing 'wrom_n5_p24_i3_c4'
+  Processing 'shift_register_l3_n5_0'
+  Processing 'dff_chain_N5'
+  Processing 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4'
+Information: Added key list 'DesignWare' to design 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4'. (DDB-72)
+  Processing 'LSTM_ACCELERATOR_inputs5_cells3_n5_p24'
+  Processing 'LSTM_ACCELERATOR_top'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'LSTM_ACCELERATOR_inputs5_cells3_n5_p24_DW01_inc_0_DW01_inc_1'
+  Processing 'LSTM_unit_n5_p24_DW01_inc_0_DW01_inc_2'
+  Processing 'adder_n5_p24_DW01_add_0'
+  Processing 'q_transformer_n5_p24_DW01_add_0_DW01_add_1'
+  Processing 'q_transformer_n5_p24_DW01_add_1_DW01_add_2'
+  Mapping 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4_DW_cmp_0'
+  Mapping 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4_DW_cmp_1'
+  Processing 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4_DW01_sub_0'
+  Processing 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4_DW01_add_0_DW01_add_3'
+  Processing 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4_DW01_inc_0_DW01_inc_3'
+  Processing 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4_DW01_inc_1_DW01_inc_4'
+  Processing 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4_DW01_inc_2_DW01_inc_5'
+  Processing 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4_DW01_dec_0'
+  Processing 'addr_generator_cells3_inputs5_x_ad_dim3_h_ad_dim2_w_ad_dim3_b_ad_dim4_DW01_inc_3_DW01_inc_6'
+  Building model 'DW01_NAND2'
+  Processing 'DW01_NAND2'
+  Building model 'DW01_sub_width32' (rpl)
+  Processing 'DW01_sub_width32'
+  Building model 'DW01_inc_width32' (rpl)
+  Processing 'DW01_inc_width32'
+  Building model 'DW01_add_width32' (rpl)
+  Processing 'DW01_add_width32'
+  Building model 'DW01_sub_width27' (rpl)
+  Processing 'DW01_sub_width27'
+  Building model 'DW01_inc_width27' (rpl)
+  Processing 'DW01_inc_width27'
+  Mapping 'multiplier_n5_p24_2_DW_mult_tc_0'
+  Mapping 'multiplier_n5_p24_0_DW_mult_tc_0'
+  Mapping 'multiplier_n5_p24_1_DW_mult_tc_0'
+  Processing 'q_transformer_n5_p24_DW01_inc_0_DW01_inc_7'
+  Processing 'q_transformer_n5_p24_DW01_sub_0_DW01_sub_1'
+  Processing 'mac_n5_p24_2_DW01_add_0_DW01_add_4'
+  Mapping 'mac_n5_p24_2_DW_mult_tc_0'
+  Processing 'mac_n5_p24_1_DW01_add_0_DW01_add_5'
+  Mapping 'mac_n5_p24_1_DW_mult_tc_0'
+  Processing 'pwl_i32_n5_p24_DW01_inc_0_DW01_inc_8'
+  Processing 'pwl_i32_n5_p24_DW01_sub_0_DW01_sub_2'
+  Processing 'mac_n5_p24_0_DW01_add_0_DW01_add_6'
+  Mapping 'mac_n5_p24_0_DW_mult_tc_0'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:47   12583.0      0.00       0.0     690.4                          
+    0:00:47   12583.0      0.00       0.0     690.4                          
+    0:00:49   13207.4      0.00       0.0       2.7                          
+    0:00:57   14100.8      0.00       0.0       1.0                          
+    0:00:57   14100.8      0.00       0.0       1.0                          
+    0:00:57   14100.8      0.00       0.0       1.0                          
+    0:00:57   14100.8      0.00       0.0       1.0                          
+    0:00:58   14100.8      0.00       0.0       1.0                          
+    0:01:09   10601.5      0.00       0.0       1.0                          
+    0:01:10   10601.4      0.00       0.0       1.0                          
+    0:01:15   10601.4      0.00       0.0       1.0                          
+    0:01:15   10601.4      0.00       0.0       1.0                          
+    0:01:15   10601.4      0.00       0.0       1.0                          
+    0:01:16   10601.1      0.00       0.0       1.0                          
+    0:01:16   10601.1      0.00       0.0       1.0                          
+    0:01:16   10601.1      0.00       0.0       1.0                          
+    0:01:16   10601.1      0.00       0.0       1.0                          
+    0:01:16   10601.1      0.00       0.0       1.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:01:16   10601.1      0.00       0.0       1.0                          
+    0:01:16   10601.1      0.00       0.0       1.0                          
+    0:01:16   10601.1      0.00       0.0       1.0                          
+
+
+  Beginning Design Rule Fixing  (min_capacitance)
+  ----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:01:16   10601.1      0.00       0.0       1.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:01:16   10601.1      0.00       0.0       1.0                          
+    0:01:16   10601.1      0.00       0.0       1.0                          
+    0:01:19   10555.8      0.00       0.0       1.0                          
+    0:01:21   10527.3      0.00       0.0       1.0                          
+    0:01:22   10514.5      0.00       0.0       1.0                          
+    0:01:22   10507.3      0.00       0.0       1.0                          
+    0:01:23   10501.4      0.00       0.0       1.0                          
+    0:01:23   10499.3      0.00       0.0       1.0                          
+    0:01:23   10497.1      0.00       0.0       1.0                          
+    0:01:23   10494.9      0.00       0.0       1.0                          
+    0:01:24   10493.0      0.00       0.0       1.0                          
+    0:01:24   10491.2      0.00       0.0       1.0                          
+    0:01:25   10490.0      0.00       0.0       1.0                          
+    0:01:25   10488.2      0.00       0.0       1.0                          
+    0:01:25   10486.3      0.00       0.0       1.0                          
+    0:01:26   10484.8      0.00       0.0       1.0                          
+    0:01:26   10483.2      0.00       0.0       1.0                          
+    0:01:26   10481.7      0.00       0.0       1.0                          
+    0:01:26   10480.4      0.00       0.0       1.0                          
+    0:01:27   10479.0      0.00       0.0       1.0                          
+    0:01:27   10478.1      0.00       0.0       1.0                          
+    0:01:27   10478.1      0.00       0.0       1.0                          
+    0:01:27   10478.1      0.00       0.0       1.0                          
+    0:01:27   10477.2      0.00       0.0       1.0                          
+    0:01:27   10477.2      0.00       0.0       1.0                          
+    0:01:27   10477.2      0.00       0.0       1.0                          
+    0:01:27   10477.2      0.00       0.0       1.0                          
+    0:01:27   10477.2      0.00       0.0       1.0                          
+    0:01:27   10477.2      0.00       0.0       1.0                          
+    0:01:28   10472.9      0.00       0.0       1.0                          
+Loading db file '/eda/dk/SAED14nm/stdcell_hvt/db_nldm/saed14hvt_ff0p7v125c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'LSTM_ACCELERATOR_top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'uut/u3/u1/clock': 2415 load(s), 1 driver(s)
+1

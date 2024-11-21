@@ -74,6 +74,17 @@ architecture Behavioral of pwl_i32 is
 
 begin
 
+    rom <= (
+        X"00EC9A9F00000000",
+        X"0099550D0029A2C9",
+        X"00497FEC007977E9",
+        X"001E256E00BA7FA6",
+        X"000B907C00DFA98A",
+        X"0004524F00F1C4FC",
+        X"0001995B00F9EFD7",
+        X"000096EB00FD7861"
+    );
+
     abs_input <=  input when input(2**n-1) = '0' else (std_logic_vector(unsigned(not(input)) + 1)); 
     address <= abs_input (p+2 downto p) when st = '1' else abs_input (p+1 downto p-1);  
 
