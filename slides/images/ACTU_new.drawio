@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0" version="24.8.6">
   <diagram name="Page-1" id="RbRdEx7LKMOHVXa9Vndr">
-    <mxGraphModel dx="857" dy="494" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1173" dy="676" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -35,7 +35,7 @@
         <mxCell id="ZQ7gyXQi0KkHRQITgzZB-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZQ7gyXQi0KkHRQITgzZB-17" target="ZQ7gyXQi0KkHRQITgzZB-36">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ZQ7gyXQi0KkHRQITgzZB-17" value="&lt;div&gt;LUT&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="ZQ7gyXQi0KkHRQITgzZB-17" value="&lt;div&gt;LUT&lt;/div&gt;&lt;div&gt;8x64&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="310" y="240" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="ZQ7gyXQi0KkHRQITgzZB-36" value="Coefficient converter" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
