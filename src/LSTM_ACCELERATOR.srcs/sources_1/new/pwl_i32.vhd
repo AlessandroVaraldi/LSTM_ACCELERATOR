@@ -70,7 +70,7 @@ architecture Behavioral of pwl_i32 is
         X"000096EB00FD7861"
     );
     
-    signal lut_out: std_logic_vector (2**(n+1)-1 downto 0);
+    signal lut_out: std_logic_vector (63 downto 0);
 
 begin
 

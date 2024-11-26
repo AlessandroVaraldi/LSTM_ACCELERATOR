@@ -19,7 +19,7 @@ entity LSTM_unit is
         h_new       : out dataflow
     );
 end entity;
-    
+
 architecture Behavioral of LSTM_unit is
     
     signal f_en, i_en, z_en, o_en, c_en: std_logic;

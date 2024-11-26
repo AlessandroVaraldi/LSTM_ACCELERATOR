@@ -27,7 +27,7 @@ begin
         elsif rising_edge (clock) and clken = '1' then
             m_t <= m;
             m_s (31) <= m (31);
-            m_s (30 downto 23) <= std_logic_vector(unsigned(m (30 downto 23) - 2));
+            m_s (30 downto 23) <= std_logic_vector(unsigned(m (30 downto 23)) - 2);
             m_s (22 downto 0) <= m (22 downto 0);
         end if;
     end process; 

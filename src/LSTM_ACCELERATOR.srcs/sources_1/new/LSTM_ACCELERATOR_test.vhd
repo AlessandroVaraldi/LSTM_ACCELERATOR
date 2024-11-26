@@ -70,13 +70,13 @@ architecture Behavioral of LSTM_ACCELERATOR_test is
             start       : in  std_logic;
             data_x      : in  input_array;
             ready       : out std_logic;
-            output      : out std_logic_vector (2**n-1 downto 0)
+            outp        : out std_logic_vector (2**n-1 downto 0)
         );
     end component;
     
     signal x_ad: unsigned(7 downto 0) := (others => '0');
     signal data: std_logic_vector(159 downto 0);
-    signal output: std_logic_vector (2**precision-1 downto 0);
+    signal outp: std_logic_vector (2**precision-1 downto 0);
     
     component xrom is
         port (
@@ -149,6 +149,7 @@ begin
             rst     => rst,
             start   => start,
             data_x  => data_x,
+            outp    => outp,
             ready   => ready
         );
         

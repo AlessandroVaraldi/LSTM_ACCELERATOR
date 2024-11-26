@@ -25,8 +25,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 package custom_types is
     
     constant mac_comps: integer := 2;
-    constant inputs: integer := 5;
-    constant cells: integer := 3;
+    constant inputs: integer := 8;
+    constant cells: integer := 4;
     constant precision: integer := 5;
     constant point: integer := 24;
 

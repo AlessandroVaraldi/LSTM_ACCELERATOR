@@ -1,0 +1,6 @@
+Time resolution is 1 ps
+ERROR: Index 128 out of bound 0 to 127
+Time: 2630 ns  Iteration: 1  Process: /LSTM_ACCELERATOR_test/u0/m0/line__281
+  File: /home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/wrom.vhd
+
+HDL Line: /home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/wrom.vhd:284

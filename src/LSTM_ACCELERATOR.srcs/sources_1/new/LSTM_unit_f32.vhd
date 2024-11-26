@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 use work.custom_types.all;
-use work.components_i32.all;
+use work.components_f32.all;
 
 entity LSTM_unit_f32 is
     generic (n: integer; p: integer);
@@ -21,6 +21,21 @@ entity LSTM_unit_f32 is
 end entity;
     
 architecture Behavioral of LSTM_unit_f32 is
+
+    component mac_f32 is
+        port
+        (
+            reset   : in  std_logic;
+            clock   : in  std_logic;
+            clken	: in  std_logic;
+            start   : in  std_logic;	
+            data1	: in  dataflow;		
+            data2	: in  dataflow;	
+            data3	: in  dataflow;	
+            d_out	: out dataflow;	
+            flags  	: out std_logic_vector(4 downto 0)
+        );
+    end component;
     
     signal f_en, i_en, z_en, o_en, c_en: std_logic;
 
@@ -227,36 +242,33 @@ begin
     c_df.gate <= "010";
     
     u0: mul_f32
-        generic map (n => n, p => p)
 		port map (
             reset   =>  rst,
             clock   =>  clk,
             clken   =>  clken,
-            data1   =>  f_df,
-            data2   =>  c_df,
-            d_out   =>  cf_df
+            data1   =>  f_df.data,
+            data2   =>  c_df.data,
+            d_out   =>  cf_df.data
 		);
 		
     u1: mul_f32
-        generic map (n => n, p => p)
 		port map (
             reset   =>  rst,
             clock   =>  clk,
             clken   =>  clken,
-            data1   =>  i_df,
-            data2   =>  z_df,
-            d_out   =>  iz_df
+            data1   =>  i_df.data,
+            data2   =>  z_df.data,
+            d_out   =>  iz_df.data
 		);
 		
 	u2: sum_f32
-        generic map (n => n, p => p)
 		port map (
             reset   =>  rst,
             clock   =>  clk,
             clken   =>  clken,
-            data1   =>  cf_df,
-            data2   =>  iz_df,
-            d_out   =>  sum
+            data1   =>  cf_df.data,
+            data2   =>  iz_df.data,
+            d_out   =>  sum.data
 		);
 		
 	c_new <= sum;
@@ -268,7 +280,6 @@ begin
     q <= lut_out (2**n-1 downto 0);
     
     u3: mac_f32
-        generic map (n => n, p => p)
         port map (
             reset       => rst,
             clock       => clk,
@@ -287,14 +298,13 @@ begin
 	-- o might need a shift register
 		
 	u4: mul_f32
-        generic map (n => n, p => p)
 		port map (
             reset   =>  rst_mul,
             clock   =>  clk,
             clken   =>  clken,
-            data1   =>  tanh_c,
-            data2   =>  o_df,
-            d_out   =>  mul
+            data1   =>  tanh_c.data,
+            data2   =>  o_df.data,
+            d_out   =>  mul.data
 		);
     
     h_new <= mul;
