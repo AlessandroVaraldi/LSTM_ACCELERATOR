@@ -1,7 +1,7 @@
 Vivado Simulator v2024.1.2
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: /home/alessandro/Tools/Xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L work -L secureip --snapshot LSTM_ACCELERATOR_testf_behav xil_defaultlib.LSTM_ACCELERATOR_testf -log elaborate.log 
+Running: /home/alessandro/Tools/Xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L work -L secureip --snapshot LSTM_ACCELERATOR_test_behav xil_defaultlib.LSTM_ACCELERATOR_test -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration

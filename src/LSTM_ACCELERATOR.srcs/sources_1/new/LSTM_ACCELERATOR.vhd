@@ -327,7 +327,7 @@ begin
             when LOAD =>
                 load_init <= '1';
             
-                if cnt = xad_dim-1 then
+                if cnt = 2**xad_dim-1 then
                     cnt_rs <= '1';
                     next_state <= POSTLOAD;
                 else
