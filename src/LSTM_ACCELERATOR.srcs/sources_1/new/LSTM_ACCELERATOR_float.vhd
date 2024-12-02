@@ -176,9 +176,9 @@ architecture Behavioral of LSTM_ACCELERATOR_float is
         );
     end component;
     
-    signal h_we: std_logic;
+    signal h_we, c_we: std_logic;
     signal h_wad, h_rad: std_logic_vector (had_dim-1 downto 0);
-    signal h_in, h_out: std_logic_vector(2**n-1 downto 0);
+    signal h_in, h_out, c_in, c_out: std_logic_vector(2**n-1 downto 0);
     
     component dff_chain is
         generic (
@@ -210,11 +210,12 @@ architecture Behavioral of LSTM_ACCELERATOR_float is
         (
             clk:        in  std_logic;
             rst:        in  std_logic;
-            input:      in  std_logic_vector (2**n-1 downto 0);
-            sign:       in  std_logic;
-            gate:       in  std_logic;
-            m:          out std_logic_vector (2**n-1 downto 0);
-            q:          out std_logic_vector (2**n-1 downto 0)
+            input:      in  dataflow;
+            output:     out dataflow
+            --sign:       in  std_logic;
+            --gate:       in  std_logic;
+            --m:          out std_logic_vector (2**n-1 downto 0);
+            --q:          out std_logic_vector (2**n-1 downto 0)
         );
     end component;
     
@@ -230,6 +231,7 @@ architecture Behavioral of LSTM_ACCELERATOR_float is
             start       : in  std_logic;
             stop        : in  std_logic;
             data        : in  dataflow;
+            c_old       : in  dataflow;
             c_new       : out dataflow;
             h_new       : out dataflow
         );
@@ -330,7 +332,7 @@ begin
             when LOAD =>
                 load_init <= '1';
             
-                if cnt = xad_dim-1 then
+                if cnt = 2**xad_dim-1 then
                     cnt_rs <= '1';
                     next_state <= POSTLOAD;
                 else
@@ -515,25 +517,28 @@ begin
         port map (
             clk     => clk,
             rst     => rst,
-            input   => act_in.data,
-            output  => act_out.data
+            input   => act_in,
+            output  => act_out
         );
         
     LU_in <= act_out;
     LU_start <= act_out.flag;
         
---    u3: LSTM_unit_f32
---        generic map (n => n, p => p)
---        port map (
---            clk     => clk,
---            rst     => rst,
---            clken   => '1',
---            start   => LU_start,
---            stop    => '0',
---            data    => LU_in,
---            c_new   => c_new,
---            h_new   => h_new
---        );
+    u3: LSTM_unit_f32
+        generic map (n => n, p => p)
+        port map (
+            clk     => clk,
+            rst     => rst,
+            clken   => '1',
+            start   => LU_start,
+            stop    => '0',
+            data    => LU_in,
+            c_old.data   => c_out,
+            c_old.gate   => "000",
+            c_old.flag   => '1',
+            c_new   => c_new,
+            h_new   => h_new
+        );
         
     h_in <= h_new.data;
     h_we <= h_new.flag;
@@ -550,6 +555,23 @@ begin
             rd_addr     => h_rad,
             din         => h_in,
             dout        => h_out
+        );
+        
+    c_in <= c_new.data;
+    c_we <= c_new.flag;
+        
+    m4: h_ram
+        generic map (
+            n => n,
+            len => had_dim
+        )
+        port map (
+            clk         => clk,
+            we          => c_we,
+            wr_addr     => h_wad,
+            rd_addr     => h_rad,
+            din         => c_in,
+            dout        => c_out
         );
         
     ready <= adg_rd or load_init;

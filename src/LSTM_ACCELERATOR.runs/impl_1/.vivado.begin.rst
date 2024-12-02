@@ -53,3 +53,18 @@
     <Process Command="vivado" Owner="alessandro" Host="vivobook" Pid="104224" HostCore="8" HostMemory="11936588">
     </Process>
 </ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="alessandro" Host="vivobook" Pid="13841" HostCore="8" HostMemory="11936348">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="alessandro" Host="vivobook" Pid="26326" HostCore="8" HostMemory="11936348">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="alessandro" Host="vivobook" Pid="41802" HostCore="8" HostMemory="11936348">
+    </Process>
+</ProcessHandle>

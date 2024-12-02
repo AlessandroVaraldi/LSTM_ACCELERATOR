@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 use work.custom_types.all;
-use work.components_i32.all;
+use work.components_f32.all;
 
 entity pwl_f32 is
     generic (n: integer; p: integer);
@@ -32,15 +32,32 @@ entity pwl_f32 is
     (
         clk:        in  std_logic;
         rst:        in  std_logic;
-        input:      in  std_logic_vector (2**n-1 downto 0);
-        sign:       in  std_logic;
-        gate:       in  std_logic;
-        m:          out std_logic_vector (2**n-1 downto 0);
-        q:          out std_logic_vector (2**n-1 downto 0)
+        input:      in  dataflow;
+        output:     out dataflow
+        --sign:       in  std_logic;
+        --gate:       in  std_logic;
+        --m:          out std_logic_vector (2**n-1 downto 0);
+        --q:          out std_logic_vector (2**n-1 downto 0)
     );
 end pwl_f32;
 
 architecture Behavioral of pwl_f32 is
+
+    signal sign, gate: std_logic;
+    
+    component dff_chain is
+        generic (
+           N : integer := 8
+        );
+        port (
+           clock : in std_logic;
+           reset : in std_logic;
+           start : in std_logic;
+           q     : out std_logic_vector(N-1 downto 0)
+        );
+    end component;
+    
+    signal sign_v, gate_v: std_logic_vector (3 downto 0);
 
     component cnv_f2i is
         port
@@ -70,9 +87,10 @@ architecture Behavioral of pwl_f32 is
         );
     end component;
 
-    signal nor_input, int_input: std_logic_vector (2**n-1 downto 0);
+    signal nor_input, int_input, reg_input: dataflow;
     
-    signal address, m_address, q_address: std_logic_vector (2 downto 0);
+    signal address: std_logic_vector (4 downto 0);
+    signal m_address, q_address: std_logic_vector (4 downto 0);
 
     type m_rom_type is array (0 to 15) of STD_LOGIC_VECTOR(31 downto 0);
     signal m_rom : m_rom_type := (
@@ -130,24 +148,59 @@ architecture Behavioral of pwl_f32 is
         X"3eff6915"
     );
     
-    signal lut_out: std_logic_vector (2**(n+1)-1 downto 0);
+    signal m, q: std_logic_vector (2**n-1 downto 0);
 
 begin
 
-    nor_input (31) <= '0';
-    nor_input (30 downto 23) <= std_logic_vector(unsigned(input (30 downto 23)) + p);
-    nor_input (22 downto 0) <= input (22 downto 0);
+    gate <= '0' when input.gate = "110" else '1';
+    sign <= input.data(31);
+    
+    f0: dff_chain 
+        generic map (n => 4)
+        port map (
+            clock   => clk,
+            reset   => rst,
+            start   => gate,
+            q       => gate_v
+        );
+        
+        
+    f1: dff_chain 
+        generic map (n => 4)
+        port map (
+            clock   => clk,
+            reset   => rst,
+            start   => sign,
+            q       => sign_v
+        );
+
+    nor_input.data (31) <= '0';
+    nor_input.data (30 downto 23) <= std_logic_vector(unsigned(input.data (30 downto 23)) + p);
+    nor_input.data (22 downto 0) <= input.data (22 downto 0);
+    nor_input.flag <= input.flag;
+    nor_input.gate <= input.gate;
     
     u0: cnv_f2i
         port map (
             reset   => rst,
             clock   => clk,
             clken   => '1',
-            data1   => nor_input,
-            d_out   => int_input
+            data1   => nor_input.data,
+            d_out   => int_input.data
         );
+        
+    process (clk)
+    begin
+        if rst = '1' then
+            int_input.flag <= '0';
+            int_input.gate <= (others => '0');
+        elsif rising_edge(clk) then
+            int_input.flag <= nor_input.flag;
+            int_input.gate <= nor_input.gate;
+        end if;
+   end process;
     
-    address <= int_input (p+2 downto p) when gate = '1' else int_input (p+1 downto p-1);
+    address <= "00" & int_input.data (p+2 downto p) when gate = '1' else "00" & int_input.data (p+1 downto p-1);
     m_address <=    std_logic_vector(unsigned(address) +  8) when gate = '1' else address;
     q_address <=    std_logic_vector(unsigned(address) +  8) when gate = '1' and sign = '0' else
                     std_logic_vector(unsigned(address) + 16) when gate = '0' and sign = '1' else
@@ -159,13 +212,30 @@ begin
         if rst = '1' then
             m <= (others => '0');
             q <= (others => '0');
+            reg_input.data <= (others => '0');
+            reg_input.gate <= (others => '0');
+            reg_input.flag <= '0';
         elsif rising_edge(clk) then
             m <= m_rom (to_integer(unsigned(m_address)));
-            q <= m_rom (to_integer(unsigned(q_address)));
+            q <= q_rom (to_integer(unsigned(q_address)));
+            reg_input <= input;
         end if;
     end process;
-
-    m <= lut_out (2**(n+1)-1 downto 2**n);
-    q <= lut_out (2**n-1 downto 0);
+    
+    u1: mac_f32
+        port map (
+            clock   => clk,
+            reset   => rst,
+            start   => reg_input.flag,
+            clken   => '1',
+            data1   => reg_input,
+            data2.data   => m,
+            data2.gate   => "000",
+            data2.flag   => '1',
+            data3.data   => q,
+            data3.gate   => "000",
+            data3.flag   => '1',
+            d_out   => output
+        );
 
 end Behavioral;

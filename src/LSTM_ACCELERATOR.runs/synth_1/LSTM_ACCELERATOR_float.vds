@@ -1,0 +1,739 @@
+#-----------------------------------------------------------
+# Vivado v2024.1.2 (64-bit)
+# SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+# IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+# SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+# Start of session at: Thu Nov 28 11:45:34 2024
+# Process ID: 40040
+# Current directory: /home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.runs/synth_1
+# Command line: vivado -log LSTM_ACCELERATOR_float.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source LSTM_ACCELERATOR_float.tcl
+# Log file: /home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.runs/synth_1/LSTM_ACCELERATOR_float.vds
+# Journal file: /home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.runs/synth_1/vivado.jou
+# Running On        :vivobook
+# Platform          :Ubuntu
+# Operating System  :Ubuntu 24.04.1 LTS
+# Processor Detail  :11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz
+# CPU Frequency     :1300.250 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :12222 MB
+# Swap memory       :4294 MB
+# Total Virtual     :16517 MB
+# Available Virtual :10428 MB
+#-----------------------------------------------------------
+source LSTM_ACCELERATOR_float.tcl -notrace
+create_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1380.719 ; gain = 17.840 ; free physical = 360 ; free virtual = 9116
+Command: read_checkpoint -auto_incremental -incremental /home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/utils_1/imports/synth_1/LSTM_ACCELERATOR.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/utils_1/imports/synth_1/LSTM_ACCELERATOR.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top LSTM_ACCELERATOR_float -part xc7k70tfbv676-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7k70t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7k70t'
+INFO: [Device 21-403] Loading part xc7k70tfbv676-1
+INFO: [Device 21-9227] Part: xc7k70tfbv676-1 does not have CEAM library.
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 40876
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2134.246 ; gain = 411.715 ; free physical = 195 ; free virtual = 7234
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'LSTM_ACCELERATOR_float' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:46]
+WARNING: [Synth 8-614] signal 'shift_out' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:285]
+WARNING: [Synth 8-614] signal 'h_out' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:285]
+WARNING: [Synth 8-614] signal 'w_out' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:285]
+WARNING: [Synth 8-614] signal 'b_out' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:285]
+WARNING: [Synth 8-614] signal 'mac_o' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:285]
+WARNING: [Synth 8-614] signal 'c_new' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:285]
+	Parameter cells bound to: 3 - type: integer 
+	Parameter inputs bound to: 5 - type: integer 
+	Parameter x_ad_dim bound to: 3 - type: integer 
+	Parameter h_ad_dim bound to: 2 - type: integer 
+	Parameter w_ad_dim bound to: 3 - type: integer 
+	Parameter b_ad_dim bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'addr_generator' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/addr_generator.vhd:26' bound to instance 'u0' of component 'addr_generator' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:422]
+INFO: [Synth 8-638] synthesizing module 'addr_generator' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/addr_generator.vhd:55]
+	Parameter cells bound to: 3 - type: integer 
+	Parameter inputs bound to: 5 - type: integer 
+	Parameter x_ad_dim bound to: 3 - type: integer 
+	Parameter h_ad_dim bound to: 2 - type: integer 
+	Parameter w_ad_dim bound to: 3 - type: integer 
+	Parameter b_ad_dim bound to: 4 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'addr_generator' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/addr_generator.vhd:55]
+	Parameter N bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'dff_chain' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:25' bound to instance 'f0' of component 'dff_chain' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:448]
+INFO: [Synth 8-638] synthesizing module 'dff_chain' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:37]
+	Parameter N bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-638] synthesizing module 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:35]
+INFO: [Synth 8-256] done synthesizing module 'dflipflop' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:35]
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-256] done synthesizing module 'dff_chain' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:37]
+	Parameter l bound to: 3 - type: integer 
+	Parameter n bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'shift_register' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/shift_register.vhd:5' bound to instance 'm_i' of component 'shift_register' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:461]
+INFO: [Synth 8-638] synthesizing module 'shift_register' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/shift_register.vhd:20]
+	Parameter l bound to: 3 - type: integer 
+	Parameter n bound to: 5 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'shift_register' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/shift_register.vhd:20]
+	Parameter l bound to: 3 - type: integer 
+	Parameter n bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'shift_register' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/shift_register.vhd:5' bound to instance 'm_i' of component 'shift_register' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:461]
+	Parameter l bound to: 3 - type: integer 
+	Parameter n bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'shift_register' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/shift_register.vhd:5' bound to instance 'm_i' of component 'shift_register' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:461]
+	Parameter l bound to: 3 - type: integer 
+	Parameter n bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'shift_register' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/shift_register.vhd:5' bound to instance 'm_i' of component 'shift_register' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:461]
+	Parameter l bound to: 3 - type: integer 
+	Parameter n bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'shift_register' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/shift_register.vhd:5' bound to instance 'm_i' of component 'shift_register' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:461]
+	Parameter n bound to: 5 - type: integer 
+	Parameter p bound to: 24 - type: integer 
+	Parameter i bound to: 3 - type: integer 
+	Parameter c bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'wrom' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/wrom.vhd:5' bound to instance 'm0' of component 'wrom' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:473]
+INFO: [Synth 8-638] synthesizing module 'wrom' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/wrom.vhd:14]
+	Parameter n bound to: 5 - type: integer 
+	Parameter p bound to: 24 - type: integer 
+	Parameter i bound to: 3 - type: integer 
+	Parameter c bound to: 4 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'wrom' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/wrom.vhd:14]
+	Parameter n bound to: 5 - type: integer 
+	Parameter p bound to: 24 - type: integer 
+	Parameter len bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'brom' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/brom.vhd:5' bound to instance 'm1' of component 'brom' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:486]
+INFO: [Synth 8-638] synthesizing module 'brom' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/brom.vhd:14]
+	Parameter n bound to: 5 - type: integer 
+	Parameter p bound to: 24 - type: integer 
+	Parameter len bound to: 4 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'brom' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/brom.vhd:14]
+	Parameter n bound to: 5 - type: integer 
+	Parameter p bound to: 24 - type: integer 
+INFO: [Synth 8-3491] module 'mac_unit_float' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit_float.vhd:8' bound to instance 'u1' of component 'mac_unit_float' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:498]
+INFO: [Synth 8-638] synthesizing module 'mac_unit_float' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit_float.vhd:27]
+	Parameter n bound to: 5 - type: integer 
+	Parameter p bound to: 24 - type: integer 
+WARNING: [Synth 8-614] signal 'clken' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit_float.vhd:39]
+INFO: [Synth 8-3491] module 'mac_f32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_f32.vhd:11' bound to instance 'u0' of component 'mac_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit_float.vhd:113]
+INFO: [Synth 8-638] synthesizing module 'mac_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_f32.vhd:26]
+INFO: [Synth 8-3491] module 'fp_unit' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:12' bound to instance 'u0' of component 'fp_unit' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_f32.vhd:103]
+INFO: [Synth 8-638] synthesizing module 'fp_unit' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:21]
+INFO: [Synth 8-3491] module 'lzc_32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd:8' bound to instance 'lzc1_32_comp' of component 'lzc_32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:67]
+INFO: [Synth 8-638] synthesizing module 'lzc_32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd:16]
+INFO: [Synth 8-3491] module 'lzc_16' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_16.vhd:8' bound to instance 'lzc_16_comp_0' of component 'lzc_16' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd:36]
+INFO: [Synth 8-638] synthesizing module 'lzc_16' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_16.vhd:16]
+INFO: [Synth 8-3491] module 'lzc_8' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_8.vhd:8' bound to instance 'lzc_8_comp_0' of component 'lzc_8' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_16.vhd:34]
+INFO: [Synth 8-638] synthesizing module 'lzc_8' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_8.vhd:16]
+INFO: [Synth 8-3491] module 'lzc_4' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_4.vhd:8' bound to instance 'lzc_4_comp_0' of component 'lzc_4' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_8.vhd:32]
+INFO: [Synth 8-638] synthesizing module 'lzc_4' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_4.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'lzc_4' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_4.vhd:16]
+INFO: [Synth 8-3491] module 'lzc_4' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_4.vhd:8' bound to instance 'lzc_4_comp_1' of component 'lzc_4' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_8.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'lzc_8' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_8.vhd:16]
+INFO: [Synth 8-3491] module 'lzc_8' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_8.vhd:8' bound to instance 'lzc_8_comp_1' of component 'lzc_8' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_16.vhd:35]
+INFO: [Synth 8-256] done synthesizing module 'lzc_16' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_16.vhd:16]
+INFO: [Synth 8-3491] module 'lzc_16' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_16.vhd:8' bound to instance 'lzc_16_comp_1' of component 'lzc_16' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd:37]
+INFO: [Synth 8-256] done synthesizing module 'lzc_32' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd:16]
+INFO: [Synth 8-3491] module 'lzc_32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd:8' bound to instance 'lzc2_32_comp' of component 'lzc_32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:73]
+INFO: [Synth 8-3491] module 'lzc_32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd:8' bound to instance 'lzc3_32_comp' of component 'lzc_32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:79]
+INFO: [Synth 8-3491] module 'lzc_32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd:8' bound to instance 'lzc4_32_comp' of component 'lzc_32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:85]
+INFO: [Synth 8-3491] module 'lzc_128' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_128.vhd:8' bound to instance 'lzc_128_comp' of component 'lzc_128' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:91]
+INFO: [Synth 8-638] synthesizing module 'lzc_128' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_128.vhd:16]
+INFO: [Synth 8-3491] module 'lzc_64' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_64.vhd:8' bound to instance 'lzc_64_comp_0' of component 'lzc_64' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_128.vhd:40]
+INFO: [Synth 8-638] synthesizing module 'lzc_64' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_64.vhd:16]
+INFO: [Synth 8-3491] module 'lzc_32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd:8' bound to instance 'lzc_32_comp_0' of component 'lzc_32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_64.vhd:38]
+INFO: [Synth 8-3491] module 'lzc_32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd:8' bound to instance 'lzc_32_comp_1' of component 'lzc_32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_64.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'lzc_64' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_64.vhd:16]
+INFO: [Synth 8-3491] module 'lzc_64' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_64.vhd:8' bound to instance 'lzc_64_comp_1' of component 'lzc_64' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_128.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'lzc_128' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_128.vhd:16]
+INFO: [Synth 8-3491] module 'fp_ext' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_ext.vhd:11' bound to instance 'fp_ext1_comp' of component 'fp_ext' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:97]
+INFO: [Synth 8-638] synthesizing module 'fp_ext' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_ext.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'fp_ext' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_ext.vhd:20]
+INFO: [Synth 8-3491] module 'fp_ext' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_ext.vhd:11' bound to instance 'fp_ext2_comp' of component 'fp_ext' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:105]
+INFO: [Synth 8-3491] module 'fp_ext' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_ext.vhd:11' bound to instance 'fp_ext3_comp' of component 'fp_ext' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:113]
+INFO: [Synth 8-3491] module 'fp_cmp' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_cmp.vhd:10' bound to instance 'fp_cmp_comp' of component 'fp_cmp' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:121]
+INFO: [Synth 8-638] synthesizing module 'fp_cmp' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_cmp.vhd:17]
+INFO: [Synth 8-256] done synthesizing module 'fp_cmp' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_cmp.vhd:17]
+INFO: [Synth 8-3491] module 'fp_rnd' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_rnd.vhd:11' bound to instance 'fp_rnd_comp' of component 'fp_rnd' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:127]
+INFO: [Synth 8-638] synthesizing module 'fp_rnd' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_rnd.vhd:18]
+INFO: [Synth 8-256] done synthesizing module 'fp_rnd' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_rnd.vhd:18]
+INFO: [Synth 8-3491] module 'fp_cvt' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_cvt.vhd:11' bound to instance 'fp_cvt_comp' of component 'fp_cvt' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:133]
+INFO: [Synth 8-638] synthesizing module 'fp_cvt' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_cvt.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'fp_cvt' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_cvt.vhd:25]
+INFO: [Synth 8-3491] module 'fp_sgnj' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_sgnj.vhd:10' bound to instance 'fp_sgnj_comp' of component 'fp_sgnj' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'fp_sgnj' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_sgnj.vhd:17]
+INFO: [Synth 8-256] done synthesizing module 'fp_sgnj' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_sgnj.vhd:17]
+INFO: [Synth 8-3491] module 'fp_max' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_max.vhd:10' bound to instance 'fp_max_comp' of component 'fp_max' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:149]
+INFO: [Synth 8-638] synthesizing module 'fp_max' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_max.vhd:17]
+INFO: [Synth 8-256] done synthesizing module 'fp_max' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_max.vhd:17]
+INFO: [Synth 8-3491] module 'fp_fma' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_fma.vhd:11' bound to instance 'fp_fma_comp' of component 'fp_fma' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:155]
+INFO: [Synth 8-638] synthesizing module 'fp_fma' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_fma.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'fp_fma' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_fma.vhd:22]
+INFO: [Synth 8-3491] module 'fp_exe' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_exe.vhd:10' bound to instance 'fp_exe_comp' of component 'fp_exe' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:181]
+INFO: [Synth 8-638] synthesizing module 'fp_exe' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_exe.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'fp_exe' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_exe.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'fp_unit' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:21]
+	Parameter N bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'dff_chain' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:25' bound to instance 'u1' of component 'dff_chain' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_f32.vhd:111]
+INFO: [Synth 8-638] synthesizing module 'dff_chain__parameterized1' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:37]
+	Parameter N bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-256] done synthesizing module 'dff_chain__parameterized1' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:37]
+INFO: [Synth 8-256] done synthesizing module 'mac_f32' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_f32.vhd:26]
+INFO: [Synth 8-256] done synthesizing module 'mac_unit_float' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit_float.vhd:27]
+	Parameter n bound to: 5 - type: integer 
+	Parameter p bound to: 24 - type: integer 
+INFO: [Synth 8-3491] module 'pwl_f32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd:29' bound to instance 'u2' of component 'pwl_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:515]
+INFO: [Synth 8-638] synthesizing module 'pwl_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd:44]
+	Parameter n bound to: 5 - type: integer 
+	Parameter p bound to: 24 - type: integer 
+	Parameter N bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'dff_chain' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:25' bound to instance 'f0' of component 'dff_chain' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd:158]
+INFO: [Synth 8-638] synthesizing module 'dff_chain__parameterized3' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:37]
+	Parameter N bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-3491] module 'dflipflop' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd:25' bound to instance 'dff' of component 'dflipflop' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:57]
+INFO: [Synth 8-256] done synthesizing module 'dff_chain__parameterized3' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:37]
+	Parameter N bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'dff_chain' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:25' bound to instance 'f1' of component 'dff_chain' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd:168]
+INFO: [Synth 8-3491] module 'cnv_f2i' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/cnv_f2i.vhd:30' bound to instance 'u0' of component 'cnv_f2i' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd:183]
+INFO: [Synth 8-638] synthesizing module 'cnv_f2i' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/cnv_f2i.vhd:43]
+INFO: [Synth 8-3491] module 'fp_unit' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:12' bound to instance 'u0' of component 'fp_unit' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/cnv_f2i.vhd:104]
+INFO: [Synth 8-256] done synthesizing module 'cnv_f2i' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/cnv_f2i.vhd:43]
+WARNING: [Synth 8-614] signal 'rst' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd:192]
+INFO: [Synth 8-3491] module 'mac_f32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_f32.vhd:11' bound to instance 'u1' of component 'mac_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd:225]
+INFO: [Synth 8-256] done synthesizing module 'pwl_f32' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd:44]
+	Parameter n bound to: 5 - type: integer 
+	Parameter p bound to: 24 - type: integer 
+INFO: [Synth 8-3491] module 'LSTM_unit_f32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:8' bound to instance 'u3' of component 'LSTM_unit_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:527]
+INFO: [Synth 8-638] synthesizing module 'LSTM_unit_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:24]
+	Parameter n bound to: 5 - type: integer 
+	Parameter p bound to: 24 - type: integer 
+WARNING: [Synth 8-614] signal 'clken' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:85]
+INFO: [Synth 8-226] default block is never used [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:142]
+WARNING: [Synth 8-614] signal 'sum' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:135]
+INFO: [Synth 8-3491] module 'mul_f32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mul_f32.vhd:11' bound to instance 'u0' of component 'mul_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:191]
+INFO: [Synth 8-638] synthesizing module 'mul_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mul_f32.vhd:25]
+INFO: [Synth 8-3491] module 'fp_unit' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:12' bound to instance 'u0' of component 'fp_unit' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mul_f32.vhd:101]
+	Parameter N bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'dff_chain' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:25' bound to instance 'u1' of component 'dff_chain' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mul_f32.vhd:109]
+INFO: [Synth 8-256] done synthesizing module 'mul_f32' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mul_f32.vhd:25]
+INFO: [Synth 8-3491] module 'mul_f32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mul_f32.vhd:11' bound to instance 'u1' of component 'mul_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:204]
+INFO: [Synth 8-3491] module 'sum_f32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/sum_f32.vhd:11' bound to instance 'u2' of component 'sum_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:217]
+INFO: [Synth 8-638] synthesizing module 'sum_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/sum_f32.vhd:25]
+INFO: [Synth 8-3491] module 'fp_unit' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd:12' bound to instance 'u0' of component 'fp_unit' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/sum_f32.vhd:100]
+	Parameter N bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'dff_chain' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd:25' bound to instance 'u1' of component 'dff_chain' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/sum_f32.vhd:108]
+INFO: [Synth 8-256] done synthesizing module 'sum_f32' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/sum_f32.vhd:25]
+INFO: [Synth 8-3491] module 'cnv_f2i' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/cnv_f2i.vhd:30' bound to instance 'u3' of component 'cnv_f2i' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:236]
+WARNING: [Synth 8-614] signal 'rst' is read in the process but is not in the sensitivity list [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:245]
+INFO: [Synth 8-3491] module 'mac_f32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_f32.vhd:11' bound to instance 'u4' of component 'mac_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:282]
+INFO: [Synth 8-3491] module 'mul_f32' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mul_f32.vhd:11' bound to instance 'u5' of component 'mul_f32' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:302]
+INFO: [Synth 8-256] done synthesizing module 'LSTM_unit_f32' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:24]
+	Parameter n bound to: 5 - type: integer 
+	Parameter len bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'h_RAM' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/h_RAM.vhd:5' bound to instance 'm3' of component 'h_ram' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:546]
+INFO: [Synth 8-638] synthesizing module 'h_RAM' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/h_RAM.vhd:20]
+	Parameter n bound to: 5 - type: integer 
+	Parameter len bound to: 2 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'h_RAM' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/h_RAM.vhd:20]
+	Parameter n bound to: 5 - type: integer 
+	Parameter len bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'h_RAM' declared at '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/h_RAM.vhd:5' bound to instance 'm4' of component 'h_ram' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:563]
+INFO: [Synth 8-256] done synthesizing module 'LSTM_ACCELERATOR_float' (0#1) [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:46]
+WARNING: [Synth 8-6014] Unused sequential element r_1_reg[zero] was removed.  [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_fma.vhd:331]
+WARNING: [Synth 8-6014] Unused sequential element int_input_reg[flag] was removed.  [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd:189]
+WARNING: [Synth 8-6014] Unused sequential element int_input_reg[gate] was removed.  [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd:189]
+WARNING: [Synth 8-6014] Unused sequential element int_sum_reg[flag] was removed.  [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:242]
+WARNING: [Synth 8-6014] Unused sequential element int_sum_reg[gate] was removed.  [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:242]
+WARNING: [Synth 8-6014] Unused sequential element c_reg_reg[data] was removed.  [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:274]
+WARNING: [Synth 8-6014] Unused sequential element c_reg_reg[flag] was removed.  [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:274]
+WARNING: [Synth 8-6014] Unused sequential element c_reg_reg[gate] was removed.  [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:274]
+WARNING: [Synth 8-3848] Net w_df[gate] in module/entity LSTM_ACCELERATOR_float does not have driver. [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:107]
+WARNING: [Synth 8-3848] Net b_df[gate] in module/entity LSTM_ACCELERATOR_float does not have driver. [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:107]
+WARNING: [Synth 8-7129] Port reset in module fp_exe is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clock in module fp_exe is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[class1][6] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[class1][5] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[class1][2] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[class1][1] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fdiv] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fsqrt] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fsgnj] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fcmp] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fmax] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fclass] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fmv_i2f] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fmv_f2i] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fcvt_i2f] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fcvt_f2i] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fcvt_op][1] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_fma_i[op][fcvt_op][0] in module fp_fma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[fmt][1] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[fmt][0] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class1][7] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class1][6] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class1][5] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class1][4] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class1][3] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class1][2] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class1][1] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class1][0] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class2][7] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class2][6] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class2][5] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class2][4] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class2][3] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class2][2] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class2][1] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_max_i[class2][0] in module fp_max is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][30] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][29] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][28] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][27] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][26] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][25] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][24] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][23] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][22] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][21] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][20] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][19] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][18] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][17] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][16] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][15] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][14] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][13] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][12] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][11] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][10] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][9] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][8] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][7] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][6] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][5] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][4] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][3] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][2] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][1] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_sgnj_i[data2][0] in module fp_sgnj is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fmadd] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fmsub] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fnmadd] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fnmsub] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fadd] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fsub] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fmul] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fdiv] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fsqrt] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fsgnj] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fcmp] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fmax] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fclass] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fmv_i2f] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fmv_f2i] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fcvt_i2f] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[op][fcvt_f2i] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[class][6] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[class][5] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[class][2] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_f2i_i[class][1] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fmadd] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fmsub] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fnmadd] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fnmsub] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fadd] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fsub] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fmul] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fdiv] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fsqrt] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fsgnj] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fcmp] in module fp_cvt is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fp_cvt_i2f_i[op][fmax] in module fp_cvt is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2240.184 ; gain = 517.652 ; free physical = 294 ; free virtual = 7187
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2257.996 ; gain = 535.465 ; free physical = 293 ; free virtual = 7185
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2257.996 ; gain = 535.465 ; free physical = 293 ; free virtual = 7185
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.52 ; elapsed = 00:00:00.52 . Memory (MB): peak = 2257.996 ; gain = 0.000 ; free physical = 382 ; free virtual = 7289
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/XDC1.xdc]
+WARNING: [Constraints 18-6211] Setting input delay on a clock pin 'clk' relative to clock 'clock' defined on the same pin is not supported, ignoring it [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/XDC1.xdc:3]
+Finished Parsing XDC File [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/XDC1.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/XDC1.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/LSTM_ACCELERATOR_float_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/LSTM_ACCELERATOR_float_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2408.746 ; gain = 0.000 ; free physical = 374 ; free virtual = 7293
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.08 . Memory (MB): peak = 2408.746 ; gain = 0.000 ; free physical = 374 ; free virtual = 7293
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:35 ; elapsed = 00:00:33 . Memory (MB): peak = 2408.746 ; gain = 686.215 ; free physical = 360 ; free virtual = 7318
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7k70tfbv676-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:35 ; elapsed = 00:00:33 . Memory (MB): peak = 2416.750 ; gain = 694.219 ; free physical = 360 ; free virtual = 7318
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:33 . Memory (MB): peak = 2416.750 ; gain = 694.219 ; free physical = 360 ; free virtual = 7318
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'mac_unit_float'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'LSTM_ACCELERATOR_float'
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_next_state_reg' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit_float.vhd:44]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_next_state_reg' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit_float.vhd:44]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   reset |                              001 |                               00
+                    idle |                              010 |                               01
+                pipeline |                              100 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'mac_unit_float'
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_next_state_reg' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit_float.vhd:44]
+WARNING: [Synth 8-327] inferring latch for variable 'next_state_reg' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:100]
+WARNING: [Synth 8-327] inferring latch for variable 'sum_reg_reg[flag]' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd:163]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_next_state_reg' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:278]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_next_state_reg' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:278]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   reset |                              000 |                              000
+                    idle |                              001 |                              001
+                    load |                              010 |                              010
+                postload |                              011 |                              011
+                pipeline |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'LSTM_ACCELERATOR_float'
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_next_state_reg' [/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd:278]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:38 ; elapsed = 00:00:37 . Memory (MB): peak = 2416.750 ; gain = 694.219 ; free physical = 409 ; free virtual = 7369
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   4 Input   77 Bit       Adders := 9     
+	   2 Input   77 Bit       Adders := 9     
+	   2 Input   33 Bit       Adders := 9     
+	   2 Input   32 Bit       Adders := 23    
+	   2 Input   25 Bit       Adders := 9     
+	   2 Input   12 Bit       Adders := 9     
+	   2 Input   11 Bit       Adders := 9     
+	   3 Input   11 Bit       Adders := 27    
+	   2 Input   10 Bit       Adders := 9     
+	   2 Input    9 Bit       Adders := 27    
+	   2 Input    8 Bit       Adders := 29    
+	   3 Input    8 Bit       Adders := 9     
+	   2 Input    6 Bit       Adders := 9     
+	   2 Input    5 Bit       Adders := 9     
+	   2 Input    2 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 63    
++---Registers : 
+	               77 Bit    Registers := 18    
+	               64 Bit    Registers := 1     
+	               33 Bit    Registers := 4     
+	               32 Bit    Registers := 49    
+	               30 Bit    Registers := 1     
+	               25 Bit    Registers := 9     
+	               11 Bit    Registers := 27    
+	                3 Bit    Registers := 44    
+	                2 Bit    Registers := 19    
+	                1 Bit    Registers := 180   
++---ROMs : 
+	                    ROMs := 2     
++---Muxes : 
+	   2 Input   77 Bit        Muxes := 63    
+	   9 Input   64 Bit        Muxes := 1     
+	   2 Input   59 Bit        Muxes := 27    
+	   2 Input   33 Bit        Muxes := 54    
+	   2 Input   32 Bit        Muxes := 401   
+	   4 Input   32 Bit        Muxes := 9     
+	  17 Input   32 Bit        Muxes := 1     
+	   5 Input   32 Bit        Muxes := 4     
+	   2 Input   25 Bit        Muxes := 36    
+	   2 Input   12 Bit        Muxes := 9     
+	   2 Input   11 Bit        Muxes := 63    
+	   2 Input   10 Bit        Muxes := 189   
+	   2 Input    7 Bit        Muxes := 27    
+	   2 Input    6 Bit        Muxes := 63    
+	   5 Input    5 Bit        Muxes := 9     
+	   2 Input    5 Bit        Muxes := 164   
+	   6 Input    5 Bit        Muxes := 9     
+	   4 Input    5 Bit        Muxes := 9     
+	   3 Input    5 Bit        Muxes := 1     
+	   3 Input    4 Bit        Muxes := 27    
+	   2 Input    4 Bit        Muxes := 3     
+	   2 Input    3 Bit        Muxes := 43    
+	   3 Input    3 Bit        Muxes := 1     
+	   5 Input    3 Bit        Muxes := 3     
+	   2 Input    2 Bit        Muxes := 44    
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 436   
+	   6 Input    1 Bit        Muxes := 18    
+	   4 Input    1 Bit        Muxes := 22    
+	   3 Input    1 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 10    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP mantissa_r0, operation Mode is: A*B.
+DSP Report: operator mantissa_r0 is absorbed into DSP mantissa_r0.
+DSP Report: operator mantissa_r0 is absorbed into DSP mantissa_r0.
+DSP Report: Generating DSP mantissa_r0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator mantissa_r0 is absorbed into DSP mantissa_r0.
+DSP Report: operator mantissa_r0 is absorbed into DSP mantissa_r0.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:03:14 ; elapsed = 00:03:14 . Memory (MB): peak = 2416.750 ; gain = 694.219 ; free physical = 383 ; free virtual = 7404
+---------------------------------------------------------------------------------
+ Sort Area is fp_unit mantissa_r0_0 : 0 0 : 3446 4760 : Used 9 time 0
+ Sort Area is fp_unit mantissa_r0_0 : 0 1 : 1314 4760 : Used 9 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++-----------------------+-------------+---------------+----------------+
+|Module Name            | RTL Object  | Depth x Width | Implemented As | 
++-----------------------+-------------+---------------+----------------+
+|LSTM_ACCELERATOR_float | q_reg       | 32x32         | Block RAM      | 
+|LSTM_ACCELERATOR_float | m0/temp_reg | 128x30        | Block RAM      | 
++-----------------------+-------------+---------------+----------------+
+
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++-----------------------+------------+-----------+----------------------+-------------+
+|Module Name            | RTL Object | Inference | Size (Depth x Width) | Primitives  | 
++-----------------------+------------+-----------+----------------------+-------------+
+|LSTM_ACCELERATOR_float | m4/ram_reg | Implied   | 4 x 32               | RAM32M x 6  | 
+|LSTM_ACCELERATOR_float | m3/ram_reg | Implied   | 4 x 32               | RAM32M x 6  | 
++-----------------------+------------+-----------+----------------------+-------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|fp_fma      | A*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | (PCIN>>17)+A*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:30 ; elapsed = 00:03:30 . Memory (MB): peak = 2416.750 ; gain = 694.219 ; free physical = 384 ; free virtual = 7409
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:03:53 ; elapsed = 00:03:53 . Memory (MB): peak = 2486.844 ; gain = 764.312 ; free physical = 242 ; free virtual = 7268
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++-----------------------+------------+-----------+----------------------+-------------+
+|Module Name            | RTL Object | Inference | Size (Depth x Width) | Primitives  | 
++-----------------------+------------+-----------+----------------------+-------------+
+|LSTM_ACCELERATOR_float | m4/ram_reg | Implied   | 4 x 32               | RAM32M x 6  | 
+|LSTM_ACCELERATOR_float | m3/ram_reg | Implied   | 4 x 32               | RAM32M x 6  | 
++-----------------------+------------+-----------+----------------------+-------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance u2/q_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance u2/q_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance m0/temp_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance m0/temp_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:04:09 ; elapsed = 00:04:09 . Memory (MB): peak = 2494.852 ; gain = 772.320 ; free physical = 252 ; free virtual = 7278
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:04:20 ; elapsed = 00:04:20 . Memory (MB): peak = 2494.852 ; gain = 772.320 ; free physical = 191 ; free virtual = 7218
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:04:20 ; elapsed = 00:04:20 . Memory (MB): peak = 2494.852 ; gain = 772.320 ; free physical = 191 ; free virtual = 7218
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:25 ; elapsed = 00:04:24 . Memory (MB): peak = 2494.852 ; gain = 772.320 ; free physical = 188 ; free virtual = 7215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:04:25 ; elapsed = 00:04:25 . Memory (MB): peak = 2494.852 ; gain = 772.320 ; free physical = 224 ; free virtual = 7252
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:04:26 ; elapsed = 00:04:26 . Memory (MB): peak = 2494.852 ; gain = 772.320 ; free physical = 221 ; free virtual = 7248
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:04:26 ; elapsed = 00:04:26 . Memory (MB): peak = 2494.852 ; gain = 772.320 ; free physical = 221 ; free virtual = 7248
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|fp_fma      | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | PCIN>>17+A*B | 24     | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | PCIN>>17+A*B | 24     | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | PCIN>>17+A*B | 24     | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fp_fma      | PCIN>>17+A*B | 24     | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     2|
+|2     |CARRY4   |   492|
+|3     |DSP48E1  |    14|
+|4     |LUT1     |   621|
+|5     |LUT2     |  1589|
+|6     |LUT3     |  1638|
+|7     |LUT4     |  1633|
+|8     |LUT5     |  2474|
+|9     |LUT6     |  6359|
+|10    |MUXF7    |   160|
+|11    |RAM32M   |    10|
+|12    |RAM32X1D |     4|
+|13    |RAMB18E1 |     2|
+|15    |FDCE     |  1730|
+|16    |FDPE     |     1|
+|17    |FDRE     |  1379|
+|18    |LD       |     7|
+|19    |IBUF     |   163|
+|20    |OBUF     |    33|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:04:26 ; elapsed = 00:04:26 . Memory (MB): peak = 2494.852 ; gain = 772.320 ; free physical = 221 ; free virtual = 7248
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 9 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:04:16 ; elapsed = 00:04:18 . Memory (MB): peak = 2494.852 ; gain = 621.570 ; free physical = 222 ; free virtual = 7249
+Synthesis Optimization Complete : Time (s): cpu = 00:04:27 ; elapsed = 00:04:27 . Memory (MB): peak = 2494.859 ; gain = 772.320 ; free physical = 222 ; free virtual = 7249
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.29 ; elapsed = 00:00:00.3 . Memory (MB): peak = 2494.859 ; gain = 0.000 ; free physical = 561 ; free virtual = 7589
+INFO: [Netlist 29-17] Analyzing 689 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2550.879 ; gain = 0.000 ; free physical = 564 ; free virtual = 7592
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 21 instances were transformed.
+  LD => LDCE: 7 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 10 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
+
+Synth Design complete | Checksum: b094ad2e
+INFO: [Common 17-83] Releasing license: Synthesis
+164 Infos, 131 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:04:55 ; elapsed = 00:04:45 . Memory (MB): peak = 2550.879 ; gain = 1160.254 ; free physical = 565 ; free virtual = 7593
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2117.642; main = 1728.109; forked = 440.175
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3592.105; main = 2550.883; forked = 1097.250
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2574.891 ; gain = 0.000 ; free physical = 565 ; free virtual = 7595
+INFO: [Common 17-1381] The checkpoint '/home/alessandro/OneDrive/Documenti/Politecnico/Progetti/LSTM_ACCELERATOR/src/LSTM_ACCELERATOR.runs/synth_1/LSTM_ACCELERATOR_float.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file LSTM_ACCELERATOR_float_utilization_synth.rpt -pb LSTM_ACCELERATOR_float_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 28 11:50:42 2024...

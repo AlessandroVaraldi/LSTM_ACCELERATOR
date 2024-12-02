@@ -86,7 +86,7 @@ architecture rtl of mac_f32 is
     end component;
     
     signal start_v: std_logic_vector (1 downto 0);
-    signal g_tmp1, g_tmp2: std_logic_vector (2 downto 0);
+    signal g_tmp1: std_logic_vector (2 downto 0);
 
 begin
 	
@@ -121,12 +121,10 @@ begin
 	begin
 	   if reset = '1' then
 	       g_tmp1 <= (others => '0');
-	       g_tmp2 <= (others => '0');
 	       d_out.gate <= (others => '0');
 	   elsif rising_edge(clock) then
 	       g_tmp1 <= data1.gate;
-	       g_tmp2 <= g_tmp1;
-	       d_out.gate <= g_tmp2;
+	       d_out.gate <= g_tmp1;
 	   end if;
 	end process;
 	   

@@ -15,42 +15,42 @@ architecture Behavioral of brom is
     type rom_type is array (0 to 15) of STD_LOGIC_VECTOR(31 downto 0);
     signal temp : std_logic_vector (31 downto 0);
     signal rom : rom_type := (
-        X"00A45293",
-        X"007C27C0",
-        X"009BFDB0",
-        X"002218CC",
-        X"FFA886A4",
-        X"FEFBB2E0",
-        X"FFE5C27F",
-        X"FFBD22AD",
-        X"0019F896",
-        X"00FC3886",
-        X"0107A688",
-        X"0196EC7A",
-        X"00E45DA1",
-        X"007A69E4",
-        X"FFF24876",
-        X"003F271F"
+        X"3F245293",
+        X"3EF84F80",
+        X"3F1BFDB0",
+        X"3E086330",
+        X"BEAEF2B8",
+        X"BF822690",
+        X"BDD1EC08",
+        X"BE85BAA6",
+        X"3DCFC4B0",
+        X"3F7C3886",
+        X"3F83D344",
+        X"3FCB763D",
+        X"3F645DA1",
+        X"3EF4D3C8",
+        X"BD5B78A0",
+        X"3E7C9C7C"
     );
 begin
 
     rom <= (
-        X"00A45293",
-        X"007C27C0",
-        X"009BFDB0",
-        X"002218CC",
-        X"FFA886A4",
-        X"FEFBB2E0",
-        X"FFE5C27F",
-        X"FFBD22AD",
-        X"0019F896",
-        X"00FC3886",
-        X"0107A688",
-        X"0196EC7A",
-        X"00E45DA1",
-        X"007A69E4",
-        X"FFF24876",
-        X"003F271F"
+        X"3F245293",
+        X"3EF84F80",
+        X"3F1BFDB0",
+        X"3E086330",
+        X"BEAEF2B8",
+        X"BF822690",
+        X"BDD1EC08",
+        X"BE85BAA6",
+        X"3DCFC4B0",
+        X"3F7C3886",
+        X"3F83D344",
+        X"3FCB763D",
+        X"3F645DA1",
+        X"3EF4D3C8",
+        X"BD5B78A0",
+        X"3E7C9C7C"
     );
     
     process(clk)

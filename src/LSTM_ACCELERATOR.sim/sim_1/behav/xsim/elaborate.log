@@ -1,42 +1,8 @@
 Vivado Simulator v2024.1.2
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: /home/alessandro/Tools/Xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L work -L secureip --snapshot LSTM_ACCELERATOR_test_behav xil_defaultlib.LSTM_ACCELERATOR_test -log elaborate.log 
+Running: /home/alessandro/Tools/Xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L work -L secureip --snapshot LSTM_ACCELERATOR_testf_behav xil_defaultlib.LSTM_ACCELERATOR_testf -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling package std.standard
-Compiling package std.textio
-Compiling package ieee.std_logic_1164
-Compiling package ieee.numeric_std
-Compiling package ieee.std_logic_textio
-Compiling package work.custom_types
-Compiling package xil_defaultlib.lzc_wire
-Compiling package xil_defaultlib.lzc_lib
-Compiling package xil_defaultlib.fp_wire
-Compiling package xil_defaultlib.fp_lib
-Compiling package xil_defaultlib.components_i32
-Compiling architecture behavioral of entity xil_defaultlib.xrom [xrom_default]
-Compiling architecture behavioral of entity xil_defaultlib.shift_register [\shift_register(n=5)\]
-Compiling architecture behavioral of entity xil_defaultlib.addr_generator [\addr_generator(cells=4,inputs=8...]
-Compiling architecture behavioral of entity xil_defaultlib.dflipflop [dflipflop_default]
-Compiling architecture behavioral of entity xil_defaultlib.dff_chain [dff_chain_default]
-Compiling architecture behavioral of entity xil_defaultlib.wrom [\wrom(n=5,p=24,i=4,c=4)\]
-Compiling architecture behavioral of entity xil_defaultlib.brom [\brom(n=5,p=24,len=4)\]
-Compiling architecture behavioral of entity xil_defaultlib.mac [\mac(n=5,p=24)\]
-Compiling architecture behavioral of entity xil_defaultlib.mac_unit [\mac_unit(n=5,p=24)\]
-Compiling architecture behavioral of entity xil_defaultlib.dff_chain [\dff_chain(n=3)\]
-Compiling architecture behavioral of entity xil_defaultlib.pwl_i32 [\pwl_i32(n=5,p=24)\]
-Compiling architecture behavioral of entity xil_defaultlib.m_transformer [\m_transformer(n=5,p=24)\]
-Compiling architecture behavioral of entity xil_defaultlib.q_transformer [\q_transformer(n=5,p=24)\]
-Compiling architecture behavioral of entity xil_defaultlib.pwl_lut [\pwl_lut(n=5,p=24)\]
-Compiling architecture behavioral of entity xil_defaultlib.multiplier [\multiplier(n=5,p=24)\]
-Compiling architecture behavioral of entity xil_defaultlib.adder [\adder(n=5,p=24)\]
-Compiling architecture behavioral of entity xil_defaultlib.LSTM_unit [\LSTM_unit(n=5,p=24)\]
-Compiling architecture behavioral of entity xil_defaultlib.h_RAM [\h_RAM(n=5,len=2)\]
-Compiling architecture behavioral of entity xil_defaultlib.LSTM_ACCELERATOR [\LSTM_ACCELERATOR(inputs=8,cells...]
-Compiling architecture behavioral of entity xil_defaultlib.lstm_accelerator_test
-Built simulation snapshot LSTM_ACCELERATOR_test_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

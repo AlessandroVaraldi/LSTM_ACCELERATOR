@@ -46,12 +46,12 @@ package components_f32 is
         (
             reset   : in  std_logic;
             clock   : in  std_logic;
-            clken	: in  std_logic;	
-            data1	: in  std_logic_vector (31 downto 0);		
-            data2	: in  std_logic_vector (31 downto 0);	
-            d_out	: out std_logic_vector (31 downto 0);	
-            flags  	: out std_logic_vector(4 downto 0);
-            ready  	: out std_logic
+            clken	: in  std_logic;
+		    start   : in  std_logic;	
+            data1	: in  dataflow;		
+            data2	: in  dataflow;	
+            d_out	: out dataflow;	
+            flags  	: out std_logic_vector(4 downto 0)
         );
     end component;
     
@@ -60,14 +60,13 @@ package components_f32 is
         (
             reset   : in  std_logic;
             clock   : in  std_logic;
-            clken	: in  std_logic;
-            modop   : in  std_logic;	
-            data1	: in  std_logic_vector (31 downto 0);		
-            data2	: in  std_logic_vector (31 downto 0);	
-            d_out	: out std_logic_vector (31 downto 0);	
-            flags  	: out std_logic_vector(4 downto 0);
-            ready  	: out std_logic
-        );
+            clken	: in  std_logic;	
+	       	start   : in  std_logic;
+            data1	: in  dataflow;		
+            data2	: in  dataflow;	
+            d_out	: out dataflow;	
+            flags  	: out std_logic_vector(4 downto 0)
+        ); 
     end component;
     
 end components_f32;

@@ -1,0 +1,67 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_lib.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_wire.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_func.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_wire.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_lib.vhd" \
+
+vhdl work  \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/custom_types.vhd" \
+
+vhdl2008 xil_defaultlib  \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/components_i32.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/components_f32.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/addr_generator.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/brom.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/dff_chain.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/dflipflop.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/h_RAM.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/wrom.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/xrom.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/shift_register.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_ext.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_8.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_sgnj.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_fma.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_64.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_exe.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_32.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_cvt.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_rnd.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_128.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_unit.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_cmp.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_16.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/fp_max.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/fpu/lzc_4.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/mac_f32.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/pwl_lut.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/q_transformer.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/m_transformer.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/multiplier.vhd" \
+
+vhdl2008 xil_defaultlib  \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/adder.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/mac.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/pwl_i32.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/cnv_f2i.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/pwl_f32.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/sum_f32.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_unit_f32.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/mul_f32.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_float.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/xrom_float.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/mac_unit_float.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_test.vhd" \
+"../../../../LSTM_ACCELERATOR.srcs/sources_1/new/LSTM_ACCELERATOR_testf.vhd" \
+
+# Do not sort compile order
+nosort

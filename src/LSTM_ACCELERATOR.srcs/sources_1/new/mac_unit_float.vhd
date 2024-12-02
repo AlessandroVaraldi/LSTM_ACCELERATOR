@@ -111,7 +111,6 @@ begin
     bias <= data_b when newline = '1' else reg;
     
     u0: mac_f32
-        generic map (n => n, p => p)
         port map (
             clock   => clk,
             reset   => rst,

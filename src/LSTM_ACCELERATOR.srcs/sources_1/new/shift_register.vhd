@@ -19,7 +19,7 @@ end shift_register;
 
 architecture Behavioral of shift_register is
     -- Definisco la memoria come un array di 2^l celle, ognuna di dimensione n
-    type reg_array is array (0 to 2**l-1) of std_logic_vector(2**n-1 downto 0);
+    type reg_array is array (2**l-1 downto 0) of std_logic_vector(2**n-1 downto 0);
     signal shift_reg : reg_array := (others => (others => '0')); -- Inizializzo lo shift register a 0
 begin
     process (clk, rst)
@@ -30,11 +30,11 @@ begin
         elsif rising_edge(clk) then
             if enable = '1' then
                 -- Shift dei dati: tutti i dati avanzano di una posizione
-                for i in 2**l-1 downto 1 loop
-                    shift_reg(i) <= shift_reg(i-1);
+                for i in 0 to 2**l-2 loop
+                    shift_reg(i) <= shift_reg(i+1);
                 end loop;
                 -- Inserisco il nuovo dato nella prima posizione
-                shift_reg(0) <= data_in;
+                shift_reg(2**l-1) <= data_in;
             end if;
         end if;
     end process;
